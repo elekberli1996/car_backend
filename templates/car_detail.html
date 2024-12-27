@@ -4,8 +4,8 @@
 
 
 {% block custom_css %}
-<link rel="stylesheet" href="{% static "css/car_detail/style.css" %}">
-<link rel="stylesheet" href="{% static "css/car_detail/responsive.css" %}">
+<link rel="stylesheet" href="{% static 'css/car_detail/style.css' %}">
+<link rel="stylesheet" href="{% static 'css/car_detail/responsive.css' %}">
 
 {% endblock custom_css %}
 
@@ -25,13 +25,7 @@
                         {% for image in images  %}
                             <div class="slide"><img src="{{ image.image.url }}" alt="Image 4"></div>
                         {% endfor %}
-                        {% comment %} 
-                            <div class="slide"><img src="image2.jpg" alt="Image 2"></div>
-                            <div class="slide"><img src="image3.jpg" alt="Image 3"></div>
-                            <div class="slide"><img src="image4.jpg" alt="Image 4"></div>
-                            <div class="slide"><img src="image5.jpg" alt="Image 5"></div>
-                            <div class="slide"><img src="image6.jpg" alt="Image 6"></div> 
-                        {% endcomment %}
+                       
                     </div>
 
 
@@ -41,25 +35,11 @@
                     <!-- Kiçik şəkillər -->
                     <div class="thumbnails">
                         <div class="tubnail1">
-                            {% for image in images  %}
-                                <div class="slide"><img src="{{ image.image.url }}" alt="Image 4"></div>
-                            {% endfor %}
-                            {% comment %} <img src="image1.jpg" alt="" data-index="0" class="thumbnail active">
-                            <img src="image2.jpg" alt="" data-index="1" class="thumbnail">
-                            <img src="image3.jpg" alt="" data-index="2" class="thumbnail"> {% endcomment %}
 
-                        </div>
-                        <div class="tubnail2">
-                            {% for image in images  %}
-                             <div class="slide"><img src="{{ image.image.url }}" alt="Image 4"></div>
-                            {% endfor %}
-                            {% comment %} 
-                            <img src="image4.jpg" alt="" data-index="3" class="thumbnail">
-                            <img src="image5.jpg" alt="" data-index="4" class="thumbnail">
-                            <img src="image6.jpg" alt="" data-index="5" class="thumbnail"> 
-                            {% endcomment %}
-
-                        </div>
+                              <img src="{{ car.main_img.url}}" alt="Image 1">
+ {% for image in images %}   <img src="{{ image.image.url }}" alt="Image 4">   {% endfor %}
+                            
+                        </div>     
                     </div>
                 </div>
             </div>
@@ -207,5 +187,5 @@
 
 
 {% block custom_js %}
-<script src="{% static "js/home/home.js" %}"></script>
+<script src="{% static 'js/home/home.js' %}"></script>
 {% endblock custom_js %}
