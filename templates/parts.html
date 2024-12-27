@@ -1,0 +1,177 @@
+{% extends "base.html" %}
+{% load static %}
+{% block page_title %}Ehtiyat Hissələr{% endblock page_title %}
+
+{% block custom_css %}
+<link rel="stylesheet" href="{% static 'css/home/home.css' %}">
+<link rel="stylesheet" href="{% static 'css/home/responsive.css' %}">
+
+{% endblock custom_css %}
+
+{% block page_content %}
+
+<body>
+
+    <section class="mainFilter">
+       
+
+        <div class="filterDiv" style="">
+            <form class="filter" action="">
+                <input type="text" class="hisse" id="hisse" placeholder="Hisse axtar">
+                <select class="brand" id="brand">
+                    <option value="">Brand</option>
+                    <option>Toyota</option>
+                    <option>Honda</option>
+                    <option>Ford</option>
+                </select>
+                <select class="model" id="model">
+                    <option value="">Model </option>
+                    <option>F10</option>
+                    <option>F30</option>
+                    <option>F</option>
+                </select>
+                <select class="condition" id="condition">
+                    <option value="">Condition</option>
+                    <option>New</option>
+                    <option>Used</option>
+                </select>
+                <div class="price" id="price">
+                    <input id="minPrice" type="number" placeholder="Min Price" value="">
+                    <input id="maxPrice" type="number" placeholder="Max Price" value="">
+                </div>
+
+                <button class="hisseBtn"> Axtar</button>
+
+
+
+            </form>
+        </div>
+    </section>
+    <div class="mainAdvertising">
+
+        <div class="mainAdvert1">
+          <p>Burada reklamınız ola bilər</p> 
+        </div>
+        <section class="allCars">
+
+           
+            
+            <h1>Bütün Hissələr</h1>
+            <div class="cars">
+                <div class="card" >
+                    <div class="card-image">
+                        <img src="img/carimg.jpg" alt="Car Part">
+                        <div class="overlay"></div>
+                    </div>
+                    <div class="card-content">
+                        <div class="carPart">
+                            <p>Hisse Adi</p>
+                            <h3 class="price">$100</h3>
+                        </div>
+                        
+                        <p class="brand-model">Porsche Taican</p>
+                        <hr>
+                        <div class="info">
+                           <p>Islenmis</p>
+                           <p>catdirima var</p>            
+                        </div>
+                        <hr>
+                        <div class="location-date">
+                            <p><i class="fa-solid fa-location-dot"></i> Naxçıvan</p>
+                            <p><i class="fa-solid fa-clock"></i>bu gün 17:55</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="card" >
+                    <div class="card-image">
+                        <img src="img/carimg.jpg" alt="Car Part">
+                        <div class="overlay"></div>
+                    </div>
+                    <div class="card-content">
+                        <div class="carPart">
+                            <p>Hisse Adi</p>
+                            <h3 class="price">$100</h3>
+                        </div>
+                        
+                        <p class="brand-model">Porsche Taican</p>
+                        <hr>
+                        <div class="info">
+                           <p>Islenmis</p>
+                           <p>catdirima var</p>            
+                        </div>
+                        <hr>
+                        <div class="location-date">
+                            <p><i class="fa-solid fa-location-dot"></i> Naxçıvan</p>
+                            <p><i class="fa-solid fa-clock"></i>bu gün 17:55</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="card" >
+                    <div class="card-image">
+                        <img src="img/carimg.jpg" alt="Car Part">
+                        <div class="overlay"></div>
+                    </div>
+                    <div class="card-content">
+                        <div class="carPart">
+                            <p>Hisse Adi</p>
+                            <h3 class="price">$100</h3>
+                        </div>
+                        
+                        <p class="brand-model">Porsche Taican</p>
+                        <hr>
+                        <div class="info">
+                           <p>Islenmis</p>
+                           <p>catdirima var</p>            
+                        </div>
+                        <hr>
+                        <div class="location-date">
+                            <p><i class="fa-solid fa-location-dot"></i> Naxçıvan</p>
+                            <p><i class="fa-solid fa-clock"></i>bu gün 17:55</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="card" >
+                    <div class="card-image">
+                        <img src="img/carimg.jpg" alt="Car Part">
+                        <div class="overlay"></div>
+                    </div>
+                    <div class="card-content">
+                        <div class="carPart">
+                            <p>Hisse Adi</p>
+                            <h3 class="price">$100</h3>
+                        </div>
+                        
+                        <p class="brand-model">Porsche Taican</p>
+                        <hr>
+                        <div class="info">
+                           <p>Islenmis</p>
+                           <p>catdirima var</p>            
+                        </div>
+                        <hr>
+                        <div class="location-date">
+                            <p><i class="fa-solid fa-location-dot"></i> Naxçıvan</p>
+                            <p><i class="fa-solid fa-clock"></i>bu gün 17:55</p>
+                        </div>
+                    </div>
+                </div>
+               
+               
+            </div>
+        </section>
+        <div class="mainAdvert2">
+            <p>
+                Burada reklamınız ola bilər
+            </p>
+           
+        </div>
+    </div>
+   
+   
+</body>
+
+{% endblock page_content %}
+
+
+{% block custom_js %}
+<script src="{% static "js/home/home.js" %}"></script>
+{% endblock custom_js %}

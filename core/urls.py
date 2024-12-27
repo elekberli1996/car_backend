@@ -5,9 +5,15 @@ from django.urls import path, include
 from django.conf import settings
 from django.conf.urls.static import static
 from page.views import home
-
+from page.views import home
+from parts.views import parts,add_part
 urlpatterns = [
+    path("admin/", admin.site.urls),
     path("", home, name="home"),
+
+    path("parts/", parts, name="parts"),
+    path("add_part/", add_part, name="add_part"),
+    
     path("admin/", admin.site.urls),
     path("cars/", include("page.urls")),
 
