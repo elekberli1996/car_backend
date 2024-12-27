@@ -8,9 +8,9 @@
 
 
     {% comment %}# CSS FILES {% endcomment %}
-    <link rel="stylesheet" href="{% static "css/reset.css" %}">
-    <link rel="stylesheet" href="{% static "css/base.css" %}">
-    <link rel="stylesheet" href="{% static "css/responsive.css" %}">
+    <link rel="stylesheet" href="{% static 'css/reset.css' %}">
+    <link rel="stylesheet" href="{% static 'css/base.css' %}">
+    <link rel="stylesheet" href="{% static 'css/responsive.css' %}">
     {% block custom_css %}{% endblock custom_css %}
 
 </head>
@@ -24,7 +24,7 @@
                     <p>1Car</p>
                 </div>
                 <div class="navbarMenu">
-                    <a href="{% url "home" %}" class="home_link">Home</a>
+                    <a href="{% url 'home' %}" class="home_link">Home</a>
                     <button class="add ">
                         <div class="plus">
 
