@@ -45,3 +45,12 @@ def add_part(request):
     return render(request, "add_part.html", {"form": form, "brands": brands})
 #    
     
+
+def part_detail(request, id):
+    part = get_object_or_404(Parts, id=id)
+    images = part.images.all()
+    context = {
+        "part": part,
+        "images": images,
+    }
+    return render(request, "part_detail.html", context)

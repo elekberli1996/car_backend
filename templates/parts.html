@@ -58,102 +58,40 @@
             
             <h1>Bütün Hissələr</h1>
             <div class="cars">
+                {% for part in parts %}
+                
                 <div class="card" >
+                    <a href="{% url 'part_detail' part.id %}" class="card">
                     <div class="card-image">
-                        <img src="img/carimg.jpg" alt="Car Part">
+                        <img src="{{ part.main_img.url }}" alt="Car Part">
                         <div class="overlay"></div>
                     </div>
                     <div class="card-content">
                         <div class="carPart">
-                            <p>Hisse Adi</p>
-                            <h3 class="price">$100</h3>
+                            <p>{{part.part_name}}</p>
+                            <h3 class="price">{{part.price}} {{part.currency}} </h3>
                         </div>
                         
-                        <p class="brand-model">Porsche Taican</p>
+                        <p class="brand-model">{{part.brand}} {{part.model}}</p>
                         <hr>
                         <div class="info">
-                           <p>Islenmis</p>
-                           <p>catdirima var</p>            
+                           <p>{{part.cond}}</p>
+                                      
                         </div>
                         <hr>
                         <div class="location-date">
-                            <p><i class="fa-solid fa-location-dot"></i> Naxçıvan</p>
-                            <p><i class="fa-solid fa-clock"></i>bu gün 17:55</p>
+                            <p><i class="fa-solid fa-location-dot"></i> {{part.city}}</p>
+                            <p><i class="fa-solid fa-clock"></i>{{part.created_at}}</p>
                         </div>
                     </div>
+                </a>
                 </div>
-                <div class="card" >
-                    <div class="card-image">
-                        <img src="img/carimg.jpg" alt="Car Part">
-                        <div class="overlay"></div>
-                    </div>
-                    <div class="card-content">
-                        <div class="carPart">
-                            <p>Hisse Adi</p>
-                            <h3 class="price">$100</h3>
-                        </div>
-                        
-                        <p class="brand-model">Porsche Taican</p>
-                        <hr>
-                        <div class="info">
-                           <p>Islenmis</p>
-                           <p>catdirima var</p>            
-                        </div>
-                        <hr>
-                        <div class="location-date">
-                            <p><i class="fa-solid fa-location-dot"></i> Naxçıvan</p>
-                            <p><i class="fa-solid fa-clock"></i>bu gün 17:55</p>
-                        </div>
-                    </div>
-                </div>
-                <div class="card" >
-                    <div class="card-image">
-                        <img src="img/carimg.jpg" alt="Car Part">
-                        <div class="overlay"></div>
-                    </div>
-                    <div class="card-content">
-                        <div class="carPart">
-                            <p>Hisse Adi</p>
-                            <h3 class="price">$100</h3>
-                        </div>
-                        
-                        <p class="brand-model">Porsche Taican</p>
-                        <hr>
-                        <div class="info">
-                           <p>Islenmis</p>
-                           <p>catdirima var</p>            
-                        </div>
-                        <hr>
-                        <div class="location-date">
-                            <p><i class="fa-solid fa-location-dot"></i> Naxçıvan</p>
-                            <p><i class="fa-solid fa-clock"></i>bu gün 17:55</p>
-                        </div>
-                    </div>
-                </div>
-                <div class="card" >
-                    <div class="card-image">
-                        <img src="img/carimg.jpg" alt="Car Part">
-                        <div class="overlay"></div>
-                    </div>
-                    <div class="card-content">
-                        <div class="carPart">
-                            <p>Hisse Adi</p>
-                            <h3 class="price">$100</h3>
-                        </div>
-                        
-                        <p class="brand-model">Porsche Taican</p>
-                        <hr>
-                        <div class="info">
-                           <p>Islenmis</p>
-                           <p>catdirima var</p>            
-                        </div>
-                        <hr>
-                        <div class="location-date">
-                            <p><i class="fa-solid fa-location-dot"></i> Naxçıvan</p>
-                            <p><i class="fa-solid fa-clock"></i>bu gün 17:55</p>
-                        </div>
-                    </div>
-                </div>
+                {% endfor %}
+
+                
+                 
+              
+              
                
                
             </div>
