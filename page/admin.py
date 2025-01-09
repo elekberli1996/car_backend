@@ -1,10 +1,8 @@
 from django.contrib import admin
 from .models import Car, CarImage
 
-# Register your models here.
 
-
-# CarImage modelini araba modeline eklemek için inline formu
+# CarImage modelini Car modeline eklemek için inline formu
 class CarImageInline(admin.TabularInline):
     model = CarImage
     extra = 1  # Başlangıçta bir boş form gösterilecek
@@ -13,27 +11,56 @@ class CarImageInline(admin.TabularInline):
 @admin.register(Car)
 class CarAdmin(admin.ModelAdmin):
     list_display = ("brand", "model", "year", "price", "mileage", "created_at")
-    list_filter = ("brand", "vehicle_type", "fuel_type",  "year", "price")
-    search_fields = ("brand", "model", "year")
+    list_filter = (
+        "brand",
+        "vehicle_type",
+        "fuel_type",
+        "year",
+        "price",
+        "transmission",
+        "city",
+    )
+    search_fields = ("brand", "model", "year", "vin", "city")
     ordering = ("-year", "-price")
     inlines = [CarImageInline]
 
     fieldsets = (
-        ("General Information", {
-            "fields": (("brand", "model"), ("year", "price"), ("mileage", "fuel_type")),
-            "classes": ("wide",),
-        }),
-        ("Technical Specifications", {
-            "fields": (("transmission", "color"), ("vehicle_type", "condition")),
-            "classes": ("wide",),
-        }),
-        ("Engine Details", {
-            "fields": (("horsepower", "engine_displacement"),),
-            "classes": ("wide",),
-        }),
-        ("Description", {
-            "fields": ("description",),
-            "classes": ("collapse",),  # This section is collapsible.
-        }),
+        (
+            "General Information",
+            {
+                "fields": (
+                    ("brand", "model"),
+                    ("year", "price"),
+                    ("mileage", "fuel_type"),
+                ),
+                "classes": ("wide",),
+            },
+        ),
+        (
+            "Technical Specifications",
+            {
+                "fields": (("transmission", "color"), ("vehicle_type",)),
+                "classes": ("wide",),
+            },
+        ),
+        (
+            "Owner & Location",
+            {
+                "fields": (("name", "tel"), "city"),
+                "classes": ("wide",),
+            },
+        ),
+        (
+            "Images",
+            {
+                "fields": ("main_img",),
+            },
+        ),
+        (
+            "Additional Details",
+            {
+                "fields": ("information",),
+                "classes": ("collapse",),
+            },
+        ),
     )
-

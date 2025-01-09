@@ -1,0 +1,169 @@
+*{
+    margin: 0;
+    padding: 0;
+    text-decoration: none;
+    list-style: none;
+    box-sizing: border-box;
+}
+.mainFilter{
+    width: 1300px;
+    max-width: 95%;
+    margin: 20px auto;
+}
+.searchDiv{
+    border: 1px solid gray;
+    padding: 8px;
+    border-radius: 10px;
+    width: 80%;
+}
+.filterBtnDiv{
+    width: 20%;
+}
+.look {
+    position: absolute;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    background-color: aliceblue;
+    opacity: 0;
+    transition: all 1s;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 30px;
+
+}
+.look a{
+    color: rgb(3, 3, 3);
+    cursor: pointer;
+}
+
+.look:hover{
+    opacity: 0.5;
+}
+.filterBtnDiv button{
+    width: 100%;
+    padding: 15px;
+    border-radius: 10px;
+    transition: all 0.5s;
+}
+.search{
+    display: flex;
+    align-items: center;
+    gap: 2px;
+  
+}
+.search svg{
+    color: gray;
+
+}
+.search input{
+    width: 100%;
+    border: 1px solid white;
+    padding: 5px;
+}
+
+.search input:focus{
+    outline: 0px;
+}
+.filter{
+    display: flex;
+    flex-wrap: wrap;
+    margin-top: 20px;
+    gap: 5px;
+}
+.filter select {
+    width: calc((100% - (5px * (4 - 1))) / 4 ); 
+    font-size: 15px;
+  
+}
+.filter select,input{
+    font-size: 16px;
+    padding: 10px;
+    border-radius: 5px;
+    border: none;
+
+}
+.filterHead{
+ display: flex;
+ gap: 10px;
+}
+.black{
+    background-color: black;
+    color: white;
+   
+}
+.price,.year {
+    width: calc((100% - (5px * (4 - 1))) / 4 );  
+    display: flex; 
+    font-size: 15px;
+   
+}
+#maxMil, #location{
+    width: calc((100% - (5px * (4 - 1))) / 4 );
+    font-size: 15px;
+    
+}
+
+.price input{
+    width: 100%;
+    font-size: 15px;
+   
+  
+    
+}
+.year input{
+    width: 100%;
+    font-size: 15px;
+  
+    
+}
+
+
+.premiumCars,
+.cars {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 15px;
+    margin-bottom: 50px;
+}
+.allCars{
+    width: 1000px;
+    max-width: 95%;
+    margin: 20px auto;
+   
+}
+.allCars h1{
+    font-size: 30px;
+    margin-bottom: 20px;
+}
+.car{
+    width: calc((100% - (15px * (4 - 1))) / 4 );
+    border:1px solid rgb(148, 142, 142);
+    border-radius: 10px;
+    overflow: hidden;
+}
+.carImg{
+    width: 100%;
+}
+.carImg img{
+    width: 100%;
+}
+.carData{
+    padding: 10px;
+}
+.carDataPart1{
+    display: flex;
+    align-items: flex-end;
+    justify-content: space-between;
+    margin-bottom: 5px;
+}
+.carDataPart2{
+    display: flex;
+    justify-content: space-between; 
+    margin-bottom: 5px;
+}
+
+
+
+

@@ -1,0 +1,189 @@
+{% load static %}
+
+<!DOCTYPE html>
+<html lang="az">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Elan Yerləşdirmək</title>
+    <link rel="stylesheet" href="{% static 'css/addcar.css' %}">
+</head>
+
+<body>
+
+    <div class="ad-posting-container">
+        <h1 >Elan Yerləşdirmək</h1>
+
+
+    
+        <form action="{% url 'car-create' %}" method="POST" id="ad-form" enctype="multipart/form-data">
+            {% csrf_token %}
+            <fieldset>
+                <legend>Elan Məlumatları</legend>
+        
+                <div class="form-group">
+                    <label for="brand">Marka: <span class="required">*</span></label>
+                    <select id="brand" name="brand" required>
+                        <option value="">Seçin</option>
+                        {% for car_marka_opt in car_marka_opts %}
+                            <option value="{{ car_marka_opt.car_name }}">{{ car_marka_opt }}</option>
+                        {% endfor %}
+                    </select>
+                </div>
+        
+                <div class="form-group">
+                    <label for="model">Model: <span class="required">*</span></label>
+                    <select id="model" name="model" required>
+                        <option value="">Seçin</option>
+                    </select>
+                </div>
+        
+                <div class="form-group">
+                    <label for="vehicle_type">Ban növü: <span class="required">*</span></label>
+                    <select id="vehicle_type" name="vehicle_type" required>
+                        <option value="">Seçin</option>
+                        <option value="Sedan">Sedan</option>
+                        <option value="SUV">SUV</option>
+                        <option value="Hetçbek">Hetçbek</option>
+                    </select>
+                </div>
+        
+                <div class="form-group">
+                    <label for="color">Rəng: <span class="required">*</span></label>
+                    <select id="color" name="color" required>
+                        <option value="">Seçin</option>
+                        <option value="Qara">Qara</option>
+                        <option value="Ağ">Ağ</option>
+                        <option value="Mavi">Mavi</option>
+                    </select>
+                </div>
+        
+                <div class="form-group">
+                    <label for="fuel_type">Yanacaq növü: <span class="required">*</span></label>
+                    <select id="fuel_type" name="fuel_type" required>
+                        <option value="">Seçin</option>
+                        <option value="petrol">Benzin</option>
+                        <option value="diesel">Dizel</option>
+                        <option value="electric">Elektrik</option>
+                    </select>
+                </div>
+        
+                <div class="form-group">
+                    <label for="transmission">Sürətlər qutusu: <span class="required">*</span></label>
+                    <select id="transmission" name="transmission" required>
+                        <option value="">Seçin</option>
+                        <option value="Avtomat">Avtomat</option>
+                        <option value="Mexaniki">Mexaniki</option>
+                    </select>
+                </div>
+        
+                <div class="form-group">
+                    <label for="mileage">Yürüş (km): <span class="required">*</span></label>
+                    <input type="number" id="mileage" name="mileage" required>
+                </div>
+        
+                <div class="form-group">
+                    <label for="unit">Ölçü vahidi: <span class="required">*</span></label>
+                    <select id="unit" name="unit" required>
+                        <option value="KM">KM</option>
+                        <option value="MIL">MİL</option>
+                    </select>
+                </div>
+        
+                <div class="form-group">
+                    <label for="year">İl: <span class="required">*</span></label>
+                    <select id="year" name="year" required>
+                        <option value="2025">2025</option>
+                        <option value="2024">2024</option>
+                        <option value="2023">2023</option>
+                    </select>
+                </div>
+        
+                <div class="form-group">
+                    <label for="engine_size">Mühərrikin həcmi (sm³): <span class="required">*</span></label>
+                    <input type="number" id="engine_size" name="engine_size" min="50" required>
+                </div>
+        
+                <div class="form-group">
+                    <label for="power">Mühərrikin gücü (a.g.): <span class="required">*</span></label>
+                    <input type="number" id="power" name="power" min="30" required>
+                </div>
+        
+                <div class="form-group">
+                    <label for="vin">VIN-kod:</label>
+                    <input type="text" id="vin" name="vin" placeholder="Vin Kodu Daxil Edin">
+                </div>
+        
+                <div class="form-group">
+                    <label for="price">Qiymət:</label>
+                    <input type="text" id="price" name="price" placeholder="Qiymət daxil edin">
+                </div>
+        
+                <div class="form-group">
+                    <label for="currency">Valyuta: <span class="required">*</span></label>
+                    <select id="currency" name="currency" required>
+                        <option value="">Seçin</option>
+                        <option value="AZN">AZN</option>
+                        <option value="USD">USD</option>
+                        <option value="EURO">EURO</option>
+                    </select>
+                </div>
+        
+                <div class="form-group">
+                    <label for="information">Əlavə məlumat:</label>
+                    <textarea id="information" name="information" placeholder="Avtomobiliniz haqqında əlavə məlumat"></textarea>
+                </div>
+            </fieldset>
+        
+            <fieldset>
+                <legend>Avtomobilin Şəkilləri</legend>
+                <div class="form-group">
+                    <label for="main_img">Əsas Şəkil: <span class="required">*</span></label>
+                    <input type="file" id="main_img" name="main_img" accept="image/*" required>
+                </div>
+        
+                <div class="form-group">
+                    <label for="car_images">Əlavə Şəkillər:</label>
+                    <input type="file" id="car_images" name="car_images" accept="image/*" multiple>
+                </div>
+            </fieldset>
+        
+            <button type="submit">Davam et</button>
+        </form>
+        
+
+        
+    </div>
+
+  
+    <script src="{% static 'js/addcar.js' %}"></script>
+    
+    <script>
+     
+        var url=window.location.href
+        document.getElementById('brand').addEventListener('change', function() {
+            const brandId = this.value;
+            console.log(brandId)
+            const modelSelect = document.getElementById('model');
+
+            modelSelect.innerHTML = '<option value="">Select Model</option>';  
+
+            if (brandId) {
+                fetch(`${url}${brandId}`,{method: 'GET' })
+                    .then(response => response.json())
+                    .then(models => {console.log(models)
+                        models.models.forEach(model => {
+                            const option = document.createElement('option');
+                            option.value = model;
+                            option.textContent = model;
+                            modelSelect.appendChild(option);
+                        });
+                    });
+            }
+           
+        });
+    </script>
+</body>
+
+</html>
