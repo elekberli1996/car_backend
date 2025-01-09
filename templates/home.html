@@ -72,7 +72,6 @@
                     <option>Red</option>
                 </select>
 
-
             </form>
         </div>
     </section>
@@ -83,26 +82,22 @@
             {% for car in cars %}
             <div class="car" style="position: relative;">
                 <div class="look" style="" >
-
                     <a href="">Ətraflı Məlumat</a>
-
                 </div>
                 <div class="carImg">
-                    <img
-                        src="{{ car.main_img.url}}">
-               
+                    <img src="{{ car.main_img.url}}">
                 </div>
                 <div class="carData">
                     <div class="carDataPart1">
                         <div>
-                            <h3>{{car.marka}}  {{car.model}}</h3>
+                            <h3>{{car.brand}}  {{car.model}}</h3>
                             <p>{{car.year}}</p>
                         </div>
                         <p class="carPrice">{{car.price}}{{car.currency}}</p>
                     </div>
                     <div class="carDataPart2">
                         <div><span class="font-medium">Engine:{{car.engine_size}}</span> </div>
-                        <div><span class="font-medium">{{car.mileage}} {{car.vahid}}</span> </div>
+                        <div><span class="font-medium">{{car.mileage}} {{car.unit}}</span> </div>
                         <div><span class="font-medium">{{car.created_at}} </span> </div>
                     </div>
                     <div class="carDataPart3">

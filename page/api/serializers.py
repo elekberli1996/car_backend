@@ -1,34 +1,5 @@
-# from rest_framework import serializers
-# from ..models import Car, CarImage
-
-
-# class CarImageSerializer(serializers.ModelSerializer):
-#     class Meta:
-#         model = CarImage
-#         fields = ("id", "image", "description")
-
-
-# class CarSerializer(serializers.ModelSerializer):
-#     images = CarImageSerializer(many=True, required=False)
-
-#     class Meta:
-#         model = Car
-#         fields = "__all__"
-
-#     def create(self, validated_data):
-#         images_data = self.context["request"].FILES.getlist("images")
-#         car = Car.objects.create(**validated_data)
-
-#         for image_data in images_data:
-#             CarImage.objects.create(car=car, image=image_data)
-
-#         return car
-
-# ! Last version
-
-
 from rest_framework import serializers
-from ..models import Car, CarImage
+from ..models import Car, CarImage, CarModel
 
 
 class CarImageSerializer(serializers.ModelSerializer):
@@ -72,3 +43,12 @@ class CarSerializer(serializers.ModelSerializer):
 
 
 
+class CarHomeSerializer(serializers.ModelSerializer):
+    class Meta:
+        model = Car
+        fields = '__all__'
+
+class CarModelSerializer(serializers.ModelSerializer):
+    class Meta:
+        model = CarModel
+        fields = ["id", "name"]  # Modellerin ID ve adını döndür
