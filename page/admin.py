@@ -1,5 +1,5 @@
 from django.contrib import admin
-from .models import Car, CarImage
+from .models import Car, CarImage, CarBrand, CarModel
 
 
 # CarImage modelini Car modeline eklemek için inline formu
@@ -64,3 +64,18 @@ class CarAdmin(admin.ModelAdmin):
             },
         ),
     )
+
+
+# Register CarBrand model
+@admin.register(CarBrand)
+class CarBrandAdmin(admin.ModelAdmin):
+    list_display = ("name",)  # Display the brand name in the list view
+    search_fields = ("name",)  # Allow searching by brand name
+
+
+# Register CarModel model
+@admin.register(CarModel)
+class CarModelAdmin(admin.ModelAdmin):
+    list_display = ("name", "brand")  # Display model name and associated brand
+    list_filter = ("brand",)  # Filter models by brand
+    search_fields = ("name",)  # Allow searching by model name

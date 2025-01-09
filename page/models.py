@@ -69,3 +69,30 @@ class CarImage(models.Model):
 
     def __str__(self):
         return f"Image for {self.car.brand} {self.car.model} {self.car.year}"
+
+
+# ?-----------------
+
+
+# Car Brand Model (e.g., BMW)
+class CarBrand(models.Model):
+    name = models.CharField(
+        max_length=50, unique=True, blank=True
+    )  # Brand name (BMW, Audi, etc.)
+
+    def __str__(self):
+        return self.name
+
+
+# Car Model (Sub Models: X5, X6, X7, etc.)
+class CarModel(models.Model):
+    # Relationship with the Brand
+    brand = models.ForeignKey(
+        CarBrand, on_delete=models.CASCADE, related_name="models", null=True, blank=True
+    )
+    name = models.CharField(
+        max_length=100, blank=True, null=True
+    )  # Model name (X5, X6, X7, etc.)
+
+    def __str__(self):
+        return f"{self.name}"

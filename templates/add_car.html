@@ -27,7 +27,7 @@
                     <select id="brand" name="brand" required>
                         <option value="">Seçin</option>
                         {% for car_marka_opt in car_marka_opts %}
-                            <option value="{{ car_marka_opt.car_name }}">{{ car_marka_opt }}</option>
+                            <option value="{{ car_marka_opt.name }}">{{ car_marka_opt.name }}</option>
                         {% endfor %}
                     </select>
                 </div>

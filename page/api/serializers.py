@@ -69,3 +69,6 @@ class CarSerializer(serializers.ModelSerializer):
             CarImage.objects.create(car=car, **image_data)
 
         return car
+
+
+

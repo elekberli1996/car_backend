@@ -2,7 +2,7 @@ from rest_framework import generics
 from ..models import Car
 from .serializers import CarSerializer
 from django.views.generic import TemplateView
-from ..models import CarBrand  # Örnek olarak marka bilgisini alıyoruz
+from ..models import *  # Örnek olarak marka bilgisini alıyoruz
 
 
 class CarCreateView(generics.CreateAPIView):
