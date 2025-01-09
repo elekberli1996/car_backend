@@ -9,19 +9,22 @@ def home(request):
     return render(request, "home.html", context)
 
 
+def show_detail(request, id):
+    print("id", id)
+    return render(request, "add_car.html")
+
+
 def create_car(request):
-    brands = CarBrand.objects.all()  # Tüm markaları getir
+    brands = CarBrand.objects.all()
 
     if request.method == "POST":
         form = CarForm(request.POST, request.FILES)
         print("POST data:", request.POST)
         print("FILES data:", request.FILES)
 
-        # Form geçerliliğini kontrol et
         if form.is_valid():
-
             car_instance = form.save()
-            car_images = request.FILES.getlist("car_images")  
+            car_images = request.FILES.getlist("car_images")
             for image in car_images:
                 CarImage.objects.create(car=car_instance, image=image)
 
