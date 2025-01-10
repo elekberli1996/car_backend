@@ -1,12 +1,13 @@
 from django.urls import path
-from .views import home, create_car, show_detail
+from .views import home, add_car, car_detail
 
 # cars/home/
-# cars/create/
+# cars/add/
+# cars/1/
 
 app_name = "core"
 urlpatterns = [
     path("home/", home, name="home"),
-    path("home/<int:id>", show_detail, name="detail"),
-    path("create/", create_car, name="create_car"),
+    path("<int:id>/", car_detail, name="car_detail"),
+    path("add/", add_car, name="add_car"),
 ]

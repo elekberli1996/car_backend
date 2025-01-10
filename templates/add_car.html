@@ -15,8 +15,7 @@
     <div class="ad-posting-container">
         <h1>Elan Yerləşdirmək</h1>
 
-
-        <form action="{% url 'core:create_car' %}" method="POST" id="ad-form"  enctype="multipart/form-data">
+        <form action="{% url 'core:add_car' %}" method="POST" id="ad-form"  enctype="multipart/form-data">
             {% csrf_token %}
             <!-- Elan Məlumatları Section -->
             <fieldset>

@@ -32,17 +32,16 @@ document.getElementById("ad-form").addEventListener("submit", function (event) {
 //     document.body.appendChild(previewContainer);
 // });
 
-var url = "http://127.0.0.1:8000/api/cars/brands/";
+var url = "http://127.0.0.1:8000/api/cars/brand/model/";
 document.getElementById("brand").addEventListener("change", function () {
   const brandId = this.value;
   console.log(brandId);
 
   const modelSelect = document.getElementById("model");
-
   modelSelect.innerHTML = '<option value="">Seçin</option>';
 
   if (brandId) {
-    fetch(`${url}${brandId}/models/`, { method: "GET" })
+    fetch(`${url}${brandId}`, { method: "GET" })
       .then((response) => response.json())
       .then((models) => {
         console.log(models); // API'den gelen veriyi konsola yazdırın
@@ -51,7 +50,7 @@ document.getElementById("brand").addEventListener("change", function () {
         if (Array.isArray(models)) {
           models.forEach((model) => {
             const option = document.createElement("option");
-            option.value = model.id; // Modelin ID'sini değere ekleyin
+            option.value = model.name;       // Model: X5
             option.textContent = model.name; // Modelin adını metin olarak ekleyin
             modelSelect.appendChild(option);
           });

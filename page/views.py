@@ -1,6 +1,7 @@
 from django.shortcuts import render, redirect
 from .models import Car, CarImage, CarBrand, CarModel
 from .forms import CarForm
+from django.db import transaction
 
 
 def home(request):
@@ -9,28 +10,49 @@ def home(request):
     return render(request, "home.html", context)
 
 
-def show_detail(request, id):
+def car_detail(request, id):
     print("id", id)
     return render(request, "add_car.html")
 
 
-def create_car(request):
+def add_car(request):
     brands = CarBrand.objects.all()
 
+    # if request.method == "POST":
+    #     form = CarForm(request.POST, request.FILES)
+    #     # print("POST data:", request.POST)
+    #     # print("FILES data:", request.FILES)
+    #     if form.is_valid():
+    #         car_instance = form.save()
+    #         car_images = request.FILES.getlist("car_images")
+    #         for image in car_images:
+    #             CarImage.objects.create(car=car_instance, image=image)
+    #         return redirect("core:home")
+    #     else:
+    #         print("Form errors:", form.errors)
+    # else:
+    #     form = CarForm()
+    # return render(request, "add_car.html", {"form": form, "brands": brands})
     if request.method == "POST":
         form = CarForm(request.POST, request.FILES)
-        print("POST data:", request.POST)
-        print("FILES data:", request.FILES)
 
         if form.is_valid():
-            car_instance = form.save()
-            car_images = request.FILES.getlist("car_images")
-            for image in car_images:
-                CarImage.objects.create(car=car_instance, image=image)
+            try:
+                with transaction.atomic():
+                    car_instance = form.save()
+                    car_images = request.FILES.getlist("car_images")
 
-            return redirect("core:home")
-        else:
-            print("Form errors:", form.errors)
+                    if car_images:
+                        images_to_create = [
+                            CarImage(car=car_instance, image=image)
+                            for image in car_images
+                        ]
+                        CarImage.objects.bulk_create(images_to_create)
+
+                return redirect("core:home")
+
+            except Exception:
+                form.add_error(None, "Xəta baş verdi. Zəhmət olmasa yenidən yoxlayın.")
 
     else:
         form = CarForm()

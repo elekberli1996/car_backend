@@ -21,13 +21,17 @@ class CarSerializer(serializers.ModelSerializer):
             "fuel_type",
             "transmission",
             "mileage",
-            "unit",
             "year",
+            "price",
             "engine_size",
             "power",
             "vin",
             "currency",
+            "unit",
             "information",
+            "name",
+            "tel",
+            "city",
             "main_img",
             "car_images",
         ]
@@ -42,11 +46,11 @@ class CarSerializer(serializers.ModelSerializer):
         return car
 
 
-
 class CarHomeSerializer(serializers.ModelSerializer):
     class Meta:
         model = Car
-        fields = '__all__'
+        fields = "__all__"
+
 
 class CarModelSerializer(serializers.ModelSerializer):
     class Meta:
