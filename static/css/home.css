@@ -1,126 +1,115 @@
-*{
-    margin: 0;
-    padding: 0;
-    text-decoration: none;
-    list-style: none;
-    box-sizing: border-box;
+* {
+  margin: 0;
+  padding: 0;
+  text-decoration: none;
+  list-style: none;
+  box-sizing: border-box;
 }
-.mainFilter{
-    width: 1300px;
-    max-width: 95%;
-    margin: 20px auto;
+.mainFilter {
+  width: 1300px;
+  max-width: 95%;
+  margin: 20px auto;
 }
-.searchDiv{
-    border: 1px solid gray;
-    padding: 8px;
-    border-radius: 10px;
-    width: 80%;
+.searchDiv {
+  border: 1px solid gray;
+  padding: 8px;
+  border-radius: 10px;
+  width: 80%;
 }
-.filterBtnDiv{
-    width: 20%;
+.filterBtnDiv {
+  width: 20%;
 }
 .look {
-    position: absolute;
-    top: 0;
-    width: 100%;
-    height: 100%;
-    background-color: aliceblue;
-    opacity: 0;
-    transition: all 1s;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    font-size: 30px;
-
+  position: absolute;
+  top: 0;
+  width: 100%;
+  height: 100%;
+  background-color: aliceblue;
+  opacity: 0;
+  transition: all 1s;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 30px;
 }
-.look a{
-    color: rgb(3, 3, 3);
-    cursor: pointer;
-}
-
-.look:hover{
-    opacity: 0.5;
-}
-.filterBtnDiv button{
-    width: 100%;
-    padding: 15px;
-    border-radius: 10px;
-    transition: all 0.5s;
-}
-.search{
-    display: flex;
-    align-items: center;
-    gap: 2px;
-  
-}
-.search svg{
-    color: gray;
-
-}
-.search input{
-    width: 100%;
-    border: 1px solid white;
-    padding: 5px;
+.look a {
+  color: rgb(3, 3, 3);
+  cursor: pointer;
 }
 
-.search input:focus{
-    outline: 0px;
+.look:hover {
+  opacity: 0.5;
 }
-.filter{
-    display: flex;
-    flex-wrap: wrap;
-    margin-top: 20px;
-    gap: 5px;
+.filterBtnDiv button {
+  width: 100%;
+  padding: 15px;
+  border-radius: 10px;
+  transition: all 0.5s;
+}
+.search {
+  display: flex;
+  align-items: center;
+  gap: 2px;
+}
+.search svg {
+  color: gray;
+}
+.search input {
+  width: 100%;
+  border: 1px solid white;
+  padding: 5px;
+}
+
+.search input:focus {
+  outline: 0px;
+}
+.filter {
+  display: flex;
+  flex-wrap: wrap;
+  margin-top: 20px;
+  gap: 5px;
 }
 .filter select {
-    width: calc((100% - (5px * (4 - 1))) / 4 ); 
-    font-size: 15px;
-  
+  width: calc((100% - (5px * (4 - 1))) / 4);
+  font-size: 15px;
 }
-.filter select,input{
-    font-size: 16px;
-    padding: 10px;
-    border-radius: 5px;
-    border: none;
-
+.filter select,
+input {
+  font-size: 16px;
+  padding: 10px;
+  border-radius: 5px;
+  border: none;
 }
-.filterHead{
- display: flex;
- gap: 10px;
+.filterHead {
+  display: flex;
+  gap: 10px;
 }
-.black{
-    background-color: black;
-    color: white;
-   
+.black {
+  background-color: black;
+  color: white;
 }
-.price,.year {
-    width: calc((100% - (5px * (4 - 1))) / 4 );  
-    display: flex; 
-    font-size: 15px;
-   
+.price,
+.year {
+  width: calc((100% - (5px * (4 - 1))) / 4);
+  display: flex;
+  font-size: 15px;
 }
-#maxMil, #location{
-    width: calc((100% - (5px * (4 - 1))) / 4 );
-    font-size: 15px;
-    
+#maxMil,
+#location {
+  width: calc((100% - (5px * (4 - 1))) / 4);
+  font-size: 15px;
 }
 
-.price input{
-    width: 100%;
-    font-size: 15px;
-   
-  
-    
+.price input {
+  width: 100%;
+  font-size: 15px;
 }
-.year input{
-    width: 100%;
-    font-size: 15px;
-  
-    
+.year input {
+  width: 100%;
+  font-size: 15px;
 }
 
-
-.premiumCars,
+/* .premiumCars,
 .cars {
     display: flex;
     flex-wrap: wrap;
@@ -162,8 +151,136 @@
     display: flex;
     justify-content: space-between; 
     margin-bottom: 5px;
+} */
+
+/*  Yeni kaytlar */
+@import url("https://fonts.googleapis.com/css2?family=Exo+2:ital,wght@0,100..900;1,100..900&family=Heebo:wght@100..900&family=Josefin+Sans:ital,wght@0,100..700;1,100..700&family=Madimi+One&family=Montserrat:ital,wght@0,100..900;1,100..900&family=Noto+Sans+Khojki&family=Ojuju:wght@200..800&family=Public+Sans:ital,wght@0,100..900;1,100..900&display=swap");
+
+/* * {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+  text-decoration: none;
+  list-style: none;
+  font-family: "Exo 2", serif;
+  font-optical-sizing: auto;
+  font-weight: weight;
+  font-style: normal;
 }
 
+body {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+} */
 
+.container {
+  width: 1120px;
+  max-width: 95%;
+  margin: 0 auto;
+}
 
+.card {
+  width: 300px;
+  border-radius: 10px;
+  overflow: hidden;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+  cursor: pointer;
+  margin: 30px 10px;
+}
 
+.card:hover {
+  transform: scale(1.05);
+  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.2);
+}
+
+.card-image {
+  position: relative;
+}
+
+.card-image img {
+  width: 100%;
+  height: 200px;
+  object-fit: cover;
+}
+
+.overlay {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0, 123, 255, 0.1);
+  opacity: 0;
+  transition: opacity 0.3s ease;
+}
+
+.card-image:hover .overlay {
+  opacity: 1;
+}
+
+.card-content {
+  padding: 15px;
+  background-color: white;
+}
+
+.brand-model {
+  font-size: 18px;
+  font-weight: bold;
+  margin: 0;
+}
+
+.price {
+  font-size: 16px;
+  color: #007bff;
+  margin: 5px 0;
+}
+hr {
+  margin: 10px 0;
+  color: #007bff;
+}
+
+.info {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 10px;
+  margin: 10px;
+}
+
+.info p {
+  font-size: 18px;
+  display: flex;
+  align-items: center;
+  font-weight: 600;
+}
+
+.info i {
+  margin-left: 4px;
+  margin-right: 1px;
+
+  color: #007bff;
+}
+.location-date {
+  display: flex;
+  justify-content: space-around;
+}
+.location-date p {
+  font-size: 14px;
+}
+
+.location-date i {
+  margin-right: 5px;
+  color: #007bff;
+}
+
+.card-content .info p i {
+  font-size: 16px;
+}
+
+.premiumCars {
+  display: flex;
+  column-gap: 40px;
+  flex-wrap: wrap;
+}

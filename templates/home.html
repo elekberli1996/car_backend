@@ -76,11 +76,36 @@
         </div>
     </section>
     <section class="allCars">
-
+        <div class="container">
         <h1>Premium Masınlar</h1>
         <div class="premiumCars">
             {% for car in cars %}
-                <div   div class="car" style="position: relative;">
+
+            <div class="card">
+                <div class="card-image">
+                    <img src="{{ car.main_img.url }}" alt="Car Image">
+                    <div class="overlay"></div>
+                </div>
+                <div class="card-content">
+                    <h3 class="price">{{ car.price }}</h3>
+                    <p class="brand-model">{{ car.model }}</p>
+                    <hr>
+                    <div class="info">
+                        <p><i class="fa-solid fa-calendar-days"></i> {{ car.year }}</p>
+                        <p><i class="fa-solid fa-cogs"></i> {{ car.engine_size }} L</p>
+                        <p><i class="fa-solid fa-tachometer-alt"></i>{{ car.mileage }} {{car.unit}}</p>
+        
+                    </div>
+                    <hr>
+                    <div class="location-date">
+                        <p><i class="fa-solid fa-location-dot"></i> {{ car.city }}</p>
+                        <p><i class="fa-solid fa-clock"></i>{{car.tel }}</p>
+                    </div>
+                </div>
+            </div>
+
+                {% comment %} Emin Yazdiqlari {% endcomment %}
+                {% comment %} <div   div class="car" style="position: relative;">
                     <div class="look" style="" >
                         <a href="">Ətraflı Məlumat</a>
                     </div>
@@ -104,17 +129,12 @@
                             <span class="premium">Premium</span>
                         </div>
                     </div>
-                </div>
-{% endfor %}
-
-            
-            
-
-
+                </div> {% endcomment %}
+            {% endfor %}
         </div>
         <h1>Butun Masınlar</h1>
         <div class="cars">
-            <div class="car" style="position: relative;">
+            {% comment %} <div class="car" style="position: relative;">
                 <div class="look" style="" >
 
                     <a href="">Etrafli Melumat</a>
@@ -217,9 +237,8 @@
                     </div>
                    
                 </div>
-            </div>
-
-           
+            </div> {% endcomment %}
+        </div>
         </div>
     </section>
     <script src="{% static 'js/home.js' %}"></script>

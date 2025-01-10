@@ -44,7 +44,7 @@ class Car(models.Model):
     price = models.IntegerField(null=True)
     engine_size = models.CharField(max_length=50)
     power = models.PositiveIntegerField()
-    vin = models.CharField(max_length=50)
+    vin = models.CharField(max_length=50, unique=True)
     currency = models.CharField(max_length=20, null=False, default="AZN")
     unit = models.CharField(max_length=20, null=False, default="KM")
     information = models.CharField(max_length=400)

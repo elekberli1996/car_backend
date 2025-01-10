@@ -32,7 +32,7 @@ document.getElementById("ad-form").addEventListener("submit", function (event) {
 //     document.body.appendChild(previewContainer);
 // });
 
-var url = "http://127.0.0.1:8000/api/cars/brand/model/";
+var url = "http://127.0.0.1:8000/api/cars/model/";
 document.getElementById("brand").addEventListener("change", function () {
   const brandId = this.value;
   console.log(brandId);
@@ -50,7 +50,7 @@ document.getElementById("brand").addEventListener("change", function () {
         if (Array.isArray(models)) {
           models.forEach((model) => {
             const option = document.createElement("option");
-            option.value = model.name;       // Model: X5
+            option.value = model.name; // Model: X5
             option.textContent = model.name; // Modelin adını metin olarak ekleyin
             modelSelect.appendChild(option);
           });
