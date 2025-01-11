@@ -1,0 +1,211 @@
+{% extends "base.html" %}
+{% load static %}
+{% block page_title %}Detay{% endblock page_title %}
+
+
+{% block custom_css %}
+<link rel="stylesheet" href="{% static "css/car_detail/style.css" %}">
+<link rel="stylesheet" href="{% static "css/car_detail/responsive.css" %}">
+
+{% endblock custom_css %}
+
+{% block page_content %}
+
+<div class="container">
+
+    <div class="car_detail">
+
+        <div class="left">
+            <div class="slider_wrapper">
+                <div class="slider-container">
+                    <!-- her sekil bir bura bir de kicik sekiller hissesine gelmelidi -->
+                    <div class="slider">
+                        <div class="slide active"><img src="{{ car.main_img.url}}" alt="Image 1"></div>
+
+                        {% for image in images  %}
+                            <div class="slide"><img src="{{ image.image.url }}" alt="Image 4"></div>
+                        {% endfor %}
+                        {% comment %} 
+                            <div class="slide"><img src="image2.jpg" alt="Image 2"></div>
+                            <div class="slide"><img src="image3.jpg" alt="Image 3"></div>
+                            <div class="slide"><img src="image4.jpg" alt="Image 4"></div>
+                            <div class="slide"><img src="image5.jpg" alt="Image 5"></div>
+                            <div class="slide"><img src="image6.jpg" alt="Image 6"></div> 
+                        {% endcomment %}
+                    </div>
+
+
+                    <button class="arrow leftSlider">&#10094;</button>
+                    <button class="arrow rightSlider">&#10095;</button>
+
+                    <!-- Kiçik şəkillər -->
+                    <div class="thumbnails">
+                        <div class="tubnail1">
+                            {% for image in images  %}
+                                <div class="slide"><img src="{{ image.image.url }}" alt="Image 4"></div>
+                            {% endfor %}
+                            {% comment %} <img src="image1.jpg" alt="" data-index="0" class="thumbnail active">
+                            <img src="image2.jpg" alt="" data-index="1" class="thumbnail">
+                            <img src="image3.jpg" alt="" data-index="2" class="thumbnail"> {% endcomment %}
+
+                        </div>
+                        <div class="tubnail2">
+                            {% for image in images  %}
+                             <div class="slide"><img src="{{ image.image.url }}" alt="Image 4"></div>
+                            {% endfor %}
+                            {% comment %} 
+                            <img src="image4.jpg" alt="" data-index="3" class="thumbnail">
+                            <img src="image5.jpg" alt="" data-index="4" class="thumbnail">
+                            <img src="image6.jpg" alt="" data-index="5" class="thumbnail"> 
+                            {% endcomment %}
+
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+
+
+            <div class="main_data">
+                <div class="il">
+                    <i class="fa-solid fa-calendar"></i>
+                    <span>{{ car.year }}</span>
+                </div>
+                <div class="motor_hecmi">
+                    <i class="fa-solid fa-gas-pump"></i>
+                    <span>{{ car.engine_size }}</span>
+                </div>
+                <div class="yuruyus">
+                    <i class="fa-solid fa-gauge"></i>
+                    <span>{{ car.mileage }} {{ car.unit }}</span>
+                </div>
+                <div class="lokasiya">
+                    <i class="fa-solid fa-location-dot"></i>
+                    <span>{{ car.city }} ş.</span>
+                </div>
+            </div>
+            <p id="baxis">Elana Baxış sayı: <span id="baxis_value">5432</span></p>
+            <hr>
+            <div class="additional-data">
+                <div class="top">
+                    <div class="col">
+
+                        <div class="box">
+                            <ul>
+                                <li><span id="marka">Brand</span></li>
+                                <li><span id="model">Model</span></li>
+                                <li><span id="ban">Ban növü</span></li>
+                                <li><span id="reng">Rəng</span></li>
+                                <li><span id="yanacaq">Yanacaq növü</span></li>
+                                <li><span id="vin">VIN</span></li>
+                            </ul>
+                            <ul>
+                                <li>
+                                    <p id="marka-value">{{ car.brand }}</p>
+                                </li>
+                                <li>
+                                    <p id="model-value">{{ car.model }}</p>
+                                </li>
+                                <li>
+                                    <p id="ban-value">{{ car.vehicle_type }}</p>
+                                </li>
+                                <li>
+                                    <p id="reng-value">{{ car.color }}</p>
+                                </li>
+                                <li>
+                                    <p id="yanacaq-value">{{ car.fuel_type }}</p>
+                                </li>
+                                <li>
+                                    <p id="vin-value">{{ car.vin }}</p>
+                                    <i class="fa-regular fa-copy" id="copy-icon" style="cursor: pointer;"></i>
+
+                                </li>
+                            </ul>
+                        </div>
+                    </div>
+                    <div class="col2">
+
+
+                        <div class="box">
+                            <ul>
+                                <li><span id="suretler">Sürətlər qutusu</span></li>
+                                <li><span id="yurus">Yürüyüş</span></li>
+                                <li><span id="il">İl</span></li>
+                                <li><span id="muherrikin_hecmi">Mühərrikin həcmi</span></li>
+                                <li><span id="muherrikin_gucu">Mühərrikin gücü</span></li>
+
+                            </ul>
+                            <ul>
+                                <li>
+                                    <p id="suretler-value">{{ car.transmission }}</p>
+                                </li>
+                                <li>
+                                    <p id="yurus-value">{{ car.mileage }} {{ car.unit }}</p>
+                                </li>
+                                <li>
+                                    <p id="il-value">{{car.year}}</p>
+                                </li>
+                                <li>
+                                    <p id="hecm-value">{{ car.engine_size }}</p>
+                                </li>
+                                <li>
+                                    <p id="guc-value">{{ car.power}} a.g</p>
+                                </li>
+
+                            </ul>
+                        </div>
+
+                    </div>
+                </div>
+                <hr>
+                <div class="bottom">
+                    <div class="elave_melumat">
+                        <span id="melumat">Əlavə məlumat</span>
+                        <hr>
+                        <p id="melumat_value">{{ car.information }}</p>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+        <div class="right">
+            <div class="box">
+                <p id="qiymet">25 555 AZN</p>
+                <hr>
+
+
+
+
+                <div class="ownerinfo">
+                    <div class="owner-left">
+                        <h1 id="owner"> Random</h1>
+                        <p id="city">Naxçıvan</p>
+                    </div>
+
+                    <div class="owner-right">
+                        <img src="img/pp.jpg" alt="">
+                    </div>
+                </div>
+                <hr>
+                <div class="cntctbtn">
+                    <button> Əlaqə nömrəsi: <br> 050-505-05-05 </button>
+                </div>
+
+
+            </div>
+            <div class="forAdvertising">
+                <p>Burada reklamınız ola bilər</p>
+            </div>
+        </div>
+
+
+    </div>
+
+</div>
+   
+{% endblock page_content %}
+
+
+{% block custom_js %}
+<script src="{% static "js/home/home.js" %}"></script>
+{% endblock custom_js %}

@@ -8,6 +8,6 @@ from .views import home, add_car, car_detail
 app_name = "core"
 urlpatterns = [
     path("home/", home, name="home"),
-    path("<int:id>/", car_detail, name="car_detail"),
     path("add/", add_car, name="add_car"),
+    path("<int:id>/", car_detail, name="car_detail"),
 ]

@@ -82,30 +82,33 @@
     <h1>Premium Masınlar</h1>
     <div class="premiumCars">
         {% for car in cars %}
-        <div class="card" style="position: relative;">
+        <a href="{% url "core:car_detail" car.id %}" class="card">
+            <div  style="position: relative;">
 
-            <img src="./pro.png " class="premiumLogo" alt="">
-            <div class="card-image">
-                <img src="{{ car.main_img.url }}" alt="Car Image">
-                <div class="overlay"></div>
-            </div>
-            <div class="card-content">
-                <h3 class="price">{{ car.price }} {{ car.currency }}</h3>
-                <p class="brand-model">{{ car.brand }} {{ car.model }}</p>
-                <hr>
-                <div class="info">
-                    <p><i class="fa-solid fa-calendar-days"></i> {{ car.year }}</p>
-                    <p><i class="fa-solid fa-cogs"></i> {{ car.engine_size }}L</p>
-                    <p><i class="fa-solid fa-tachometer-alt"></i> {{ car.mileage }} {{ car.unit }}</p>
+                <img src="./pro.png " class="premiumLogo" alt="">
+                <div class="card-image">
+                    <img src="{{ car.main_img.url }}" alt="Car Image">
+                    <div class="overlay"></div>
+                </div>
+                <div class="card-content">
+                    <h3 class="price">{{ car.price }} {{ car.currency }}</h3>
+                    <p class="brand-model">{{ car.brand }} {{ car.model }}</p>
+                    <hr>
+                    <div class="info">
+                        <p><i class="fa-solid fa-calendar-days"></i> {{ car.year }}</p>
+                        <p><i class="fa-solid fa-cogs"></i> {{ car.engine_size }}L</p>
+                        <p><i class="fa-solid fa-tachometer-alt"></i> {{ car.mileage }} {{ car.unit }}</p>
 
-                </div>
-                <hr>
-                <div class="location-date">
-                    <p><i class="fa-solid fa-location-dot"></i> {{ car.city}}</p>
-                    <p><i class="fa-solid fa-clock"></i>{{ car.created_at }}</p>
+                    </div>
+                    <hr>
+                    <div class="location-date">
+                        <p><i class="fa-solid fa-location-dot"></i> {{ car.city}}</p>
+                        <p><i class="fa-solid fa-clock"></i>{{ car.created_at }}</p>
+                    </div>
                 </div>
             </div>
-        </div>
+        </a>
+
         {% endfor %}
     </div>
     <div class="mainAdvert3">
@@ -116,28 +119,32 @@
 
 
         {% for car in cars %}
-        <div class="card">
-            <div class="card-image">
-                <img src="{{ car.main_img.url }}" alt="Car Image">
-                <div class="overlay"></div>
-            </div>
-            <div class="card-content">
-                <h3 class="price">{{ car.price}} {{ car.currency }}</h3>
-                <p class="brand-model">{{ car.brand}} {{car.model}}</p>
-                <hr>
-                <div class="info">
-                    <p><i class="fa-solid fa-calendar-days"></i> {{ car.year }}</p>
-                    <p><i class="fa-solid fa-cogs"></i> {{ car.engine_size}}L</p>
-                    <p><i class="fa-solid fa-tachometer-alt"></i> {{ car.mileage}} {{car.unit}}</p>
+        <a href="{% url "core:car_detail" car.id %}" class="card">
+            <div  style="position: relative;">
 
+                <img src="./pro.png " class="premiumLogo" alt="">
+                <div class="card-image">
+                    <img src="{{ car.main_img.url }}" alt="Car Image">
+                    <div class="overlay"></div>
                 </div>
-                <hr>
-                <div class="location-date">
-                    <p><i class="fa-solid fa-location-dot"></i> {{ car.year }}</p>
-                    <p><i class="fa-solid fa-clock"></i>{{ car.created_at }}</p>
+                <div class="card-content">
+                    <h3 class="price">{{ car.price }} {{ car.currency }}</h3>
+                    <p class="brand-model">{{ car.brand }} {{ car.model }}</p>
+                    <hr>
+                    <div class="info">
+                        <p><i class="fa-solid fa-calendar-days"></i> {{ car.year }}</p>
+                        <p><i class="fa-solid fa-cogs"></i> {{ car.engine_size }}L</p>
+                        <p><i class="fa-solid fa-tachometer-alt"></i> {{ car.mileage }} {{ car.unit }}</p>
+
+                    </div>
+                    <hr>
+                    <div class="location-date">
+                        <p><i class="fa-solid fa-location-dot"></i> {{ car.city}}</p>
+                        <p><i class="fa-solid fa-clock"></i>{{ car.created_at }}</p>
+                    </div>
                 </div>
             </div>
-        </div>
+        </a>
         {% endfor %}
 
     </div>

@@ -1,4 +1,5 @@
-from django.shortcuts import render, redirect
+from django.shortcuts import render, redirect, get_object_or_404
+
 from .models import Car, CarImage, CarBrand, CarModel
 from .forms import CarForm
 from django.db import transaction
@@ -11,8 +12,14 @@ def home(request):
 
 
 def car_detail(request, id):
-    print("id", id)
-    return render(request, "add_car.html")
+    car = get_object_or_404(Car, id=id)
+    images = car.images.all()
+
+    context = {
+        "car": car,
+        "images": images,
+    }
+    return render(request, "car_detail.html", context)
 
 
 def add_car(request):
