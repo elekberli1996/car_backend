@@ -1,5 +1,4 @@
 //? Home Start
-
 const filter = document.querySelector(".filterBtn");
 const filterDiv = document.querySelector(".filterDiv");
 

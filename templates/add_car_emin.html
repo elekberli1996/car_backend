@@ -1,20 +1,20 @@
-{% extends "base.html" %}
 {% load static %}
 
-{% block page_title %}Elan Yerlesdirmek{% endblock page_title %}
+<!DOCTYPE html>
+<html lang="az">
 
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Elan Yerləşdirmək</title>
+    <link rel="stylesheet" href="{% static 'css/addcar.css' %}">
+</head>
 
-{% block custom_css %}
-<link rel="stylesheet" href="{% static "css/add_car/style.css" %}">
-<link rel="stylesheet" href="{% static "css/add_car/responsive.css" %}">
-{% endblock custom_css %}
+<body>
 
-
-{% block page_content %}
-
-<div class="frame">
     <div class="ad-posting-container">
         <h1>Elan Yerləşdirmək</h1>
+
         <form action="{% url 'core:add_car' %}" method="POST" id="ad-form"  enctype="multipart/form-data">
             {% csrf_token %}
             <!-- Elan Məlumatları Section -->
@@ -308,11 +308,11 @@
             <button type="submit">Davam et</button>
         </form>
 
+
     </div>
-</div>
-{% endblock page_content %}
 
 
-{% block custom_js %}
-<script src="{% static "js/add_car/app.js" %}"></script>
-{% endblock custom_js %}
+    <script src="{% static '/js/addcar.js' %}"></script>
+</body>
+
+</html>

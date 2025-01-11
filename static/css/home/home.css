@@ -117,7 +117,7 @@ input {
 }
 .allCars h1 {
   font-size: 30px;
-  margin-bottom: 20px;
+  margin: 20px 0px;
 }
 .car {
   width: calc((100% - (15px * (4 - 1))) / 4);
@@ -293,7 +293,7 @@ hr {
   display: flex;
   justify-content: center;
   align-items: center;
-  border-radius: 10px;
+  /* border-radius: 10px; */
   color: white;
 }
 
