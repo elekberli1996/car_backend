@@ -1,247 +1,158 @@
+{% extends "base.html" %}
 {% load static %}
-<!DOCTYPE html>
-<html lang="en">
+{% block page_title %}Home{% endblock page_title %}
 
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
-    
-    <link rel="stylesheet" href='{% static "css/home.css" %}' >
-    <link rel="stylesheet" href='{% static "css/homeres.css" %}' >
-</head>
 
-<body>
+{% block custom_css %}
+<link rel="stylesheet" href="{% static "css/home/home.css" %}">
+<link rel="stylesheet" href="{% static "css/home/responsive.css" %}">
+
+{% endblock custom_css %}
+
+{% block page_content %}
 
     <section class="mainFilter">
-        <div class="filterHead">
-            <div class="searchDiv">
-                <form class="search" action="">
-                    <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none"
-                        stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"
-                        class="lucide lucide-search absolute left-3 top-2.5 h-5 w-5 text-gray-400">
-                        <circle cx="11" cy="11" r="8"></circle>
-                        <path d="m21 21-4.3-4.3"></path>
-                    </svg>
-                    <input type="text" placeholder="Axtar">
-                </form>
-            </div>
-            <div class="filterBtnDiv">
-                
-              <button class="filterBtn">
-                Filter
-            </button>
-            </div>
+    <div class="filterHead">
+    <div class="searchDiv">
+        <form class="search" action="">
+            <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none"
+                stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"
+                class="lucide lucide-search absolute left-3 top-2.5 h-5 w-5 text-gray-400">
+                <circle cx="11" cy="11" r="8"></circle>
+                <path d="m21 21-4.3-4.3"></path>
+            </svg>
+            <input type="text" placeholder="Axtar">
+        </form>
+    </div>
+    <div class="filterBtnDiv">
+        <button class="filterBtn">Filter</button>
+    </div>
+    </div>
+
+
+    <div class="filterDiv" style="display: none;">
+    <form class="filter" action="">
+        <select class="brand" id="brand">
+            <option value="">Brand</option>
+            <option>Toyota</option>
+            <option>Honda</option>
+            <option>Ford</option>
+        </select>
+        <select class="vehicleType" id="vehicleType">
+            <option value="">Vehicle Type</option>
+            <option>Sedan</option>
+            <option>SUV</option>
+            <option>Truck</option>
+        </select>
+        <select class="condition" id="condition">
+            <option value="">Condition</option>
+            <option>New</option>
+            <option>Used</option>
+        </select>
+        <div class="price" id="price">
+            <input id="minPrice" type="number" placeholder="Min Price" value="">
+            <input id="maxPrice" type="number" placeholder="Max Price" value="">
         </div>
-
-
-        <div class="filterDiv" style="display: none;">
-            <form class="filter" action="">
-                <select class="brand" id="brand">
-                    <option value="">Brand</option>
-                    <option>Toyota</option>
-                    <option>Honda</option>
-                    <option>Ford</option>
-                </select>
-                <select class="vehicleType" id="vehicleType">
-                    <option value="">Vehicle Type</option>
-                    <option>Sedan</option>
-                    <option>SUV</option>
-                    <option>Truck</option>
-                </select>
-                <select class="condition" id="condition">
-                    <option value="">Condition</option>
-                    <option>New</option>
-                    <option>Used</option>
-                </select>
-                <div class="price" id="price">
-                    <input id="minPrice" type="number" placeholder="Min Price" value="">
-                    <input id="maxPrice" type="number" placeholder="Max Price" value="">
-                </div>
-                <div class="year" id="year">
-                    <input id="minYear" type="number" placeholder="Min Year" value="">
-                    <input id="maxYear" type="number" placeholder="Max Year" value="">
-                </div>
-                <input id="maxMil" type="number" placeholder="Max Mileage (km)" value="">
-                <input id="location" type="text" placeholder="Location" value="">
-                <select id="color" class="color">
-                    <option value="">Color</option>
-                    <option>Black</option>
-                    <option>White</option>
-                    <option>Silver</option>
-                    <option>Red</option>
-                </select>
-
-            </form>
+        <div class="year" id="year">
+            <input id="minYear" type="number" placeholder="Min Year" value="">
+            <input id="maxYear" type="number" placeholder="Max Year" value="">
         </div>
+        <input id="maxMil" type="number" placeholder="Max Mileage (km)" value="">
+        <input id="location" type="text" placeholder="Location" value="">
+        <select id="color" class="color">
+            <option value="">Color</option>
+            <option>Black</option>
+            <option>White</option>
+            <option>Silver</option>
+            <option>Red</option>
+        </select>
+
+
+    </form>
+    </div>
     </section>
+
+    <div class="mainAdvertising">
+
+    <div class="mainAdvert1">
+    <p>Burada reklamınız ola bilər</p>
+    </div>
     <section class="allCars">
-        <div class="container">
-        <h1>Premium Masınlar</h1>
-        <div class="premiumCars">
-            {% for car in cars %}
 
-            <div class="card">
-                <div class="card-image">
-                    <img src="{{ car.main_img.url }}" alt="Car Image">
-                    <div class="overlay"></div>
+    <h1>Premium Masınlar</h1>
+    <div class="premiumCars">
+        {% for car in cars %}
+        <div class="card" style="position: relative;">
+
+            <img src="./pro.png " class="premiumLogo" alt="">
+            <div class="card-image">
+                <img src="{{ car.main_img.url }}" alt="Car Image">
+                <div class="overlay"></div>
+            </div>
+            <div class="card-content">
+                <h3 class="price">{{ car.price }} {{ car.currency }}</h3>
+                <p class="brand-model">{{ car.brand }} {{ car.model }}</p>
+                <hr>
+                <div class="info">
+                    <p><i class="fa-solid fa-calendar-days"></i> {{ car.year }}</p>
+                    <p><i class="fa-solid fa-cogs"></i> {{ car.engine_size }}L</p>
+                    <p><i class="fa-solid fa-tachometer-alt"></i> {{ car.mileage }} {{ car.unit }}</p>
+
                 </div>
-                <div class="card-content">
-                    <h3 class="price">{{ car.price }}</h3>
-                    <p class="brand-model">{{ car.model }}</p>
-                    <hr>
-                    <div class="info">
-                        <p><i class="fa-solid fa-calendar-days"></i> {{ car.year }}</p>
-                        <p><i class="fa-solid fa-cogs"></i> {{ car.engine_size }} L</p>
-                        <p><i class="fa-solid fa-tachometer-alt"></i>{{ car.mileage }} {{car.unit}}</p>
-        
-                    </div>
-                    <hr>
-                    <div class="location-date">
-                        <p><i class="fa-solid fa-location-dot"></i> {{ car.city }}</p>
-                        <p><i class="fa-solid fa-clock"></i>{{car.tel }}</p>
-                    </div>
+                <hr>
+                <div class="location-date">
+                    <p><i class="fa-solid fa-location-dot"></i> {{ car.city}}</p>
+                    <p><i class="fa-solid fa-clock"></i>{{ car.created_at }}</p>
                 </div>
             </div>
-
-                {% comment %} Emin Yazdiqlari {% endcomment %}
-                {% comment %} <div   div class="car" style="position: relative;">
-                    <div class="look" style="" >
-                        <a href="">Ətraflı Məlumat</a>
-                    </div>
-                    <div class="carImg">
-                        <img src="{{ car.main_img.url}}">
-                    </div>
-                    <div class="carData">
-                        <div class="carDataPart1">
-                            <div>
-                                <h3>{{car.brand}}  {{car.model}}</h3>
-                                <p>{{car.year}}</p>
-                            </div>
-                            <p class="carPrice">{{car.price}}{{car.currency}}</p>
-                        </div>
-                        <div class="carDataPart2">
-                            <div><span class="font-medium">Engine:{{car.engine_size}}</span> </div>
-                            <div><span class="font-medium">{{car.mileage}} {{car.unit}}</span> </div>
-                            <div><span class="font-medium">{{car.created_at}} </span> </div>
-                        </div>
-                        <div class="carDataPart3">
-                            <span class="premium">Premium</span>
-                        </div>
-                    </div>
-                </div> {% endcomment %}
-            {% endfor %}
         </div>
-        <h1>Butun Masınlar</h1>
-        <div class="cars">
-            {% comment %} <div class="car" style="position: relative;">
-                <div class="look" style="" >
+        {% endfor %}
+    </div>
+    <div class="mainAdvert3">
+        <p>Burada reklamınız ola bilər</p>
+    </div>
+    <h1>Butun Masınlar</h1>
+    <div class="cars">
 
-                    <a href="">Etrafli Melumat</a>
+
+        {% for car in cars %}
+        <div class="card">
+            <div class="card-image">
+                <img src="{{ car.main_img.url }}" alt="Car Image">
+                <div class="overlay"></div>
+            </div>
+            <div class="card-content">
+                <h3 class="price">{{ car.price}} {{ car.currency }}</h3>
+                <p class="brand-model">{{ car.brand}} {{car.model}}</p>
+                <hr>
+                <div class="info">
+                    <p><i class="fa-solid fa-calendar-days"></i> {{ car.year }}</p>
+                    <p><i class="fa-solid fa-cogs"></i> {{ car.engine_size}}L</p>
+                    <p><i class="fa-solid fa-tachometer-alt"></i> {{ car.mileage}} {{car.unit}}</p>
 
                 </div>
-                <div class="carImg">
-                    <img
-                        src="https://images.unsplash.com/photo-1621007947382-bb3c3994e3fb?auto=format&amp;fit=crop&amp;w=800">
-               
-                </div>
-                <div class="carData">
-                    <div class="carDataPart1">
-                        <div>
-                            <h3>Toyota Camry</h3>
-                            <p>2021</p>
-                        </div>
-                        <p class="carPrice">$25,000</p>
-                    </div>
-                    <div class="carDataPart2">
-                        <div><span class="font-medium">Engine:</span> 2.5L</div>
-                        <div><span class="font-medium">Mileage:</span> 15000km</div>
-                    </div>
-                   
+                <hr>
+                <div class="location-date">
+                    <p><i class="fa-solid fa-location-dot"></i> {{ car.year }}</p>
+                    <p><i class="fa-solid fa-clock"></i>{{ car.created_at }}</p>
                 </div>
             </div>
-            <div class="car" style="position: relative;">
-                <div class="look" style="" >
-
-                    <a href="">Etrafli Melumat</a>
-
-                </div>
-                <div class="carImg">
-                    <img
-                        src="https://images.unsplash.com/photo-1621007947382-bb3c3994e3fb?auto=format&amp;fit=crop&amp;w=800">
-               
-                </div>
-                <div class="carData">
-                    <div class="carDataPart1">
-                        <div>
-                            <h3>Toyota Camry</h3>
-                            <p>2021</p>
-                        </div>
-                        <p class="carPrice">$25,000</p>
-                    </div>
-                    <div class="carDataPart2">
-                        <div><span class="font-medium">Engine:</span> 2.5L</div>
-                        <div><span class="font-medium">Mileage:</span> 15000km</div>
-                    </div>
-                   
-                </div>
-            </div>
-            <div class="car" style="position: relative;">
-                <div class="look" style="" >
-
-                    <a href="">Etrafli Melumat</a>
-
-                </div>
-                <div class="carImg">
-                    <img
-                        src="https://images.unsplash.com/photo-1621007947382-bb3c3994e3fb?auto=format&amp;fit=crop&amp;w=800">
-               
-                </div>
-                <div class="carData">
-                    <div class="carDataPart1">
-                        <div>
-                            <h3>Toyota Camry</h3>
-                            <p>2021</p>
-                        </div>
-                        <p class="carPrice">$25,000</p>
-                    </div>
-                    <div class="carDataPart2">
-                        <div><span class="font-medium">Engine:</span> 2.5L</div>
-                        <div><span class="font-medium">Mileage:</span> 15000km</div>
-                    </div>
-                   
-                </div>
-            </div>
-            <div class="car" style="position: relative;">
-                <div class="look" style="" >
-
-                    <a href="">Etrafli Melumat</a>
-
-                </div>
-                <div class="carImg">
-                    <img
-                        src="https://images.unsplash.com/photo-1621007947382-bb3c3994e3fb?auto=format&amp;fit=crop&amp;w=800">
-               
-                </div>
-                <div class="carData">
-                    <div class="carDataPart1">
-                        <div>
-                            <h3>Toyota Camry</h3>
-                            <p>2021</p>
-                        </div>
-                        <p class="carPrice">$25,000</p>
-                    </div>
-                    <div class="carDataPart2">
-                        <div><span class="font-medium">Engine:</span> 2.5L</div>
-                        <div><span class="font-medium">Mileage:</span> 15000km</div>
-                    </div>
-                   
-                </div>
-            </div> {% endcomment %}
         </div>
-        </div>
+        {% endfor %}
+
+    </div>
     </section>
-    <script src="{% static 'js/home.js' %}"></script>
-</body>
+    <div class="mainAdvert2">
+    <p>
+        Burada reklamınız ola bilər
+    </p>
 
-</html>
+    </div>
+    </div>
+    
+{% endblock page_content %}
+
+
+{% block custom_js %}
+<script src="{% static "js/home/home.js" %}"></script>
+{% endblock custom_js %}

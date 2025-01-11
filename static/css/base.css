@@ -1,0 +1,210 @@
+/*? Navbar Start */
+.elansDisplay {
+  display: none;
+}
+.addDisplay {
+  display: none;
+}
+.container {
+  width: 1300px;
+  max-width: 95%;
+  margin: 0 auto;
+}
+.header {
+  height: 70px;
+  width: 100%;
+  background-color: #007bff;
+  display: flex;
+  align-items: center;
+}
+.navbar {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+.navbarLogo p {
+  font-size: 30px;
+  font-weight: bold;
+  font-style: italic;
+  color: white;
+  animation-name: example;
+  animation-duration: 4s;
+  animation-iteration-count: infinite;
+}
+
+.navbarMenu {
+  display: flex;
+  align-items: center;
+  gap: 20px;
+}
+.navbarMenu .home_link {
+  color: white;
+  font-size: 20px;
+  transition: all 0.5s;
+}
+.navbarMenu a:hover {
+  transform: scale(1.1);
+}
+.login,
+.logout {
+  height: 50px;
+  border: none;
+  border-radius: 10px;
+  width: 120px;
+  cursor: pointer;
+  transition: all 0.5s;
+  font-size: 20px;
+}
+.logoutDisplay {
+  display: none;
+}
+.add {
+  height: 50px;
+  border: none;
+  border-radius: 10px;
+  width: 120px;
+  cursor: pointer;
+  transition: all 0.5s;
+}
+
+.add:hover,
+.login:hover,
+.elan1:hover,
+.elan2:hover,
+.logout:hover {
+  background-color: #7cb7f7;
+}
+
+.plus {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 5px;
+}
+.plus svg {
+  width: 20px;
+}
+.plus span {
+  font-size: 20px;
+}
+
+.elanBtn {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 2px;
+}
+.elan1,
+.elan2 {
+  width: 150px;
+  padding: 4px;
+  border-radius: 10px;
+  cursor: pointer;
+  transition: all 0.5s;
+  font-size: 14px;
+  border: none;
+}
+
+.elan1 a,
+.elan2 a {
+  color: rgb(0, 0, 0);
+}
+
+@keyframes example {
+  from {
+    transform: rotateY(0deg);
+  }
+  to {
+    transform: rotateY(360deg);
+  }
+}
+
+/*! Navbar End */
+
+/* ? Footer Start */
+.container {
+  width: 1300px;
+  max-width: 95%;
+  margin: 0 auto;
+}
+.footer {
+  height: 100px;
+  width: 100%;
+  background-color: #007bff;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+}
+.footerMenu {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-top: 5px;
+}
+.contact {
+  font-size: 20px;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+.email,
+.phone {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  color: white;
+}
+.conditions {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 20px;
+}
+.conditions p {
+  color: white;
+}
+.footerLogo {
+  font-size: 50px;
+  font-weight: bold;
+  color: white;
+  font-style: italic;
+  animation-name: footerAnimation;
+  animation-duration: 4s;
+  animation-iteration-count: infinite;
+}
+.sosials {
+  display: flex;
+  gap: 20px;
+}
+
+.footerExtra {
+  display: flex;
+  gap: 40px;
+}
+.footerExtra a {
+  color: white;
+  font-size: 16px;
+}
+.sosials a {
+  color: white;
+  font-size: 25px;
+  cursor: pointer;
+}
+.end {
+  width: 100%;
+  height: 40px;
+  background-color: black;
+  display: flex;
+  align-items: center;
+}
+
+@keyframes footerAnimation {
+  from {
+    transform: rotateY(0deg);
+  }
+  to {
+    transform: rotateY(360deg);
+  }
+}
+
+/* ! Footer End */

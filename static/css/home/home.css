@@ -1,10 +1,4 @@
-* {
-  margin: 0;
-  padding: 0;
-  text-decoration: none;
-  list-style: none;
-  box-sizing: border-box;
-}
+/* ? Home Start */
 .mainFilter {
   width: 1300px;
   max-width: 95%;
@@ -90,9 +84,9 @@ input {
 }
 .price,
 .year {
-  width: calc((100% - (5px * (4 - 1))) / 4);
+  /* width: calc((100% - (5px * (4 - 1))) / 4);
   display: flex;
-  font-size: 15px;
+  font-size: 15px; */
 }
 #maxMil,
 #location {
@@ -109,85 +103,55 @@ input {
   font-size: 15px;
 }
 
-/* .premiumCars,
+.premiumCars,
 .cars {
-    display: flex;
-    flex-wrap: wrap;
-    gap: 15px;
-    margin-bottom: 50px;
-}
-.allCars{
-    width: 1000px;
-    max-width: 95%;
-    margin: 20px auto;
-   
-}
-.allCars h1{
-    font-size: 30px;
-    margin-bottom: 20px;
-}
-.car{
-    width: calc((100% - (15px * (4 - 1))) / 4 );
-    border:1px solid rgb(148, 142, 142);
-    border-radius: 10px;
-    overflow: hidden;
-}
-.carImg{
-    width: 100%;
-}
-.carImg img{
-    width: 100%;
-}
-.carData{
-    padding: 10px;
-}
-.carDataPart1{
-    display: flex;
-    align-items: flex-end;
-    justify-content: space-between;
-    margin-bottom: 5px;
-}
-.carDataPart2{
-    display: flex;
-    justify-content: space-between; 
-    margin-bottom: 5px;
-} */
-
-/*  Yeni kaytlar */
-@import url("https://fonts.googleapis.com/css2?family=Exo+2:ital,wght@0,100..900;1,100..900&family=Heebo:wght@100..900&family=Josefin+Sans:ital,wght@0,100..700;1,100..700&family=Madimi+One&family=Montserrat:ital,wght@0,100..900;1,100..900&family=Noto+Sans+Khojki&family=Ojuju:wght@200..800&family=Public+Sans:ital,wght@0,100..900;1,100..900&display=swap");
-
-/* * {
-  box-sizing: border-box;
-  margin: 0;
-  padding: 0;
-  text-decoration: none;
-  list-style: none;
-  font-family: "Exo 2", serif;
-  font-optical-sizing: auto;
-  font-weight: weight;
-  font-style: normal;
-}
-
-body {
   display: flex;
-  align-items: center;
-  justify-content: center;
-} */
-
-.container {
-  width: 1120px;
-  max-width: 95%;
-  margin: 0 auto;
+  flex-wrap: wrap;
+  gap: 15px;
+  margin-bottom: 50px;
 }
-
+.allCars {
+  width: 900px;
+  max-width: 95%;
+  margin: 20px auto;
+}
+.allCars h1 {
+  font-size: 30px;
+  margin-bottom: 20px;
+}
+.car {
+  width: calc((100% - (15px * (4 - 1))) / 4);
+  border: 1px solid rgb(148, 142, 142);
+  border-radius: 10px;
+  overflow: hidden;
+}
+.carImg {
+  width: 100%;
+}
+.carImg img {
+  width: 100%;
+}
+.carData {
+  padding: 10px;
+}
+.carDataPart1 {
+  display: flex;
+  align-items: flex-end;
+  justify-content: space-between;
+  margin-bottom: 5px;
+}
+.carDataPart2 {
+  display: flex;
+  justify-content: space-between;
+  margin-bottom: 5px;
+}
 .card {
-  width: 300px;
+  width: calc((100% - (15px * (4 - 1))) / 4);
   border-radius: 10px;
   overflow: hidden;
   box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
   transition: transform 0.3s ease, box-shadow 0.3s ease;
   cursor: pointer;
-  margin: 30px 10px;
 }
 
 .card:hover {
@@ -245,26 +209,55 @@ hr {
   display: flex;
   justify-content: space-between;
   align-items: center;
-  margin-bottom: 10px;
-  margin: 10px;
+  margin-bottom: 10px 0px;
 }
 
 .info p {
-  font-size: 18px;
+  font-size: 15px;
   display: flex;
   align-items: center;
   font-weight: 600;
+}
+.premiumLogo {
+  width: 50px;
+  position: absolute;
+  top: 0;
+  left: 0;
+  z-index: 2;
+}
+.mainAdvertising {
+  display: flex;
+  gap: 5px;
+}
+.mainAdvert1,
+.mainAdvert2 {
+  width: calc((100% - 910px) / 2);
+  height: 100vh;
+  background-color: #007bff;
+  /* border-radius: 10px; */
+  padding: 5px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: white;
+}
+.mainAdvert1 {
+  position: sticky;
+  top: 0;
+}
+.mainAdvert2 {
+  position: sticky;
+  top: 0;
 }
 
 .info i {
   margin-left: 4px;
   margin-right: 1px;
-
   color: #007bff;
 }
 .location-date {
   display: flex;
-  justify-content: space-around;
+  justify-content: space-between;
 }
 .location-date p {
   font-size: 14px;
@@ -279,8 +272,65 @@ hr {
   font-size: 16px;
 }
 
-.premiumCars {
-  display: flex;
-  column-gap: 40px;
-  flex-wrap: wrap;
+.mainAdvert1 p {
+  animation-name: advertising;
+  animation-duration: 8s;
+  animation-timing-function: ease;
+  animation-iteration-count: infinite;
 }
+.mainAdvert2 p {
+  animation-name: advertising;
+  animation-duration: 8s;
+  animation-timing-function: ease;
+  animation-iteration-count: infinite;
+  animation-delay: 4s;
+}
+.mainAdvert3 {
+  width: 100%;
+  height: 150px;
+  background-color: #007bff;
+  animation-name: advertising2;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  border-radius: 10px;
+  color: white;
+}
+
+.mainAdvert3 p {
+  animation-name: advertising2;
+  animation-duration: 8s;
+  animation-timing-function: ease;
+  animation-iteration-count: infinite;
+  animation-delay: 2s;
+}
+
+@keyframes advertising {
+  0% {
+    transform: translateY(-250px);
+  }
+  25% {
+    transform: translateY(250px);
+  }
+  50% {
+    transform: translateY(250px);
+  }
+  100% {
+    transform: translateY(-250px);
+  }
+}
+@keyframes advertising2 {
+  0% {
+    transform: translateY(-50px);
+  }
+  25% {
+    transform: translateY(50px);
+  }
+  50% {
+    transform: translateY(50px);
+  }
+  100% {
+    transform: translateY(-50px);
+  }
+}
+/* ! Home End */
