@@ -26,14 +26,9 @@ SECRET_KEY = "django-insecure-9citi5=lhcdcanfe%$bun-l#)l#q%2=nyxqcjsa_3*@=njt$!e
 DEBUG = True
 
 ALLOWED_HOSTS = []
-# CORS_ALLOWED_ORIGINS = [
-#     "http://localhost:3000",  # Frontend'in çalıştığı adres
-# ]
-#
-# Application definition
+
 
 INSTALLED_APPS = [
-    #
     # "corsheaders",
     #
     "django.contrib.admin",
@@ -48,6 +43,13 @@ INSTALLED_APPS = [
     "django_cleanup",
     "account",
     "page",
+    #
+    # doc
+    "drf_yasg",
+    #
+    # jwt token
+    "rest_framework_simplejwt",
+    "rest_framework_simplejwt.token_blacklist",
 ]
 
 MIDDLEWARE = [
@@ -64,6 +66,7 @@ MIDDLEWARE = [
 ]
 
 ROOT_URLCONF = "core.urls"
+
 
 TEMPLATES = [
     {
@@ -85,17 +88,19 @@ WSGI_APPLICATION = "core.wsgi.application"
 
 
 ## DRF
-
 REST_FRAMEWORK = {
-    # 'DEFAULT_PERMISSION_CLASSES': [
-    #     'rest_framework.permissions.DjangoModelPermissionsOrAnonReadOnly'
-    # ],
-    "DEFAULT_FILTER_BACKENDS": ["django_filters.rest_framework.DjangoFilterBackend"]
+    "DEFAULT_FILTER_BACKENDS": ["django_filters.rest_framework.DjangoFilterBackend"],
+    "DEFAULT_AUTHENTICATION_CLASSES": (
+        "rest_framework_simplejwt.authentication.JWTAuthentication",
+    ),
+    # Tüm API'ler için kimlik doğrulama zorunlu
+    "DEFAULT_PERMISSION_CLASSES": ("rest_framework.permissions.IsAuthenticated",),
 }
+
+AUTH_USER_MODEL = "account.CustomUser"
 
 
 ##
-
 # Database
 # https://docs.djangoproject.com/en/5.1/ref/settings/#databases
 

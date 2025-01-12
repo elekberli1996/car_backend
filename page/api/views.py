@@ -24,6 +24,8 @@ class HomeAPIView(APIView):
 
 # @method_decorator(csrf_exempt, name="dispatch")
 class CarCreateView(generics.CreateAPIView):
+    serializer_class = CarSerializer
+
     # def post(self, request, *args, **kwargs):
     #     serializer = CarSerializer(data=request.data)
 
