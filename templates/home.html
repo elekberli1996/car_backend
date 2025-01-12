@@ -82,7 +82,7 @@
     <h1>Premium Masınlar</h1>
     <div class="premiumCars">
         {% for car in cars %}
-        <a href="{% url "core:car_detail" car.id %}" class="card">
+        <a href="{% url "page:car_detail" car.id %}" class="card">
             <div  style="position: relative;">
 
                 <img src="./pro.png " class="premiumLogo" alt="">
@@ -119,7 +119,7 @@
 
 
         {% for car in cars %}
-        <a href="{% url "core:car_detail" car.id %}" class="card">
+        <a href="{% url "page:car_detail" car.id %}" class="card">
             <div  style="position: relative;">
 
                 <img src="./pro.png " class="premiumLogo" alt="">
