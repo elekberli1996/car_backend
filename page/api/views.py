@@ -56,44 +56,13 @@ class CarCreateView(generics.CreateAPIView):
 
         if serializer.is_valid():
             car_instance = serializer.save()
+            car_data = CarSerializer(car_instance).data
             return Response(
-                {
-                    "message": "Car added successfully",
-                    "car_id": car_instance.id,
-                },
+                {"message": "car added", "car_data": car_data},
                 status=status.HTTP_201_CREATED,
             )
 
         return Response(serializer.errors, status=status.HTTP_400_BAD_REQUEST)
-
-    # def post(self, request, *args, **kwargs):
-    #     serializer = CarSerializer(data=request.data)
-
-    #     if serializer.is_valid():
-    #         try:
-    #             car_instance = serializer.save()
-    #             return Response(
-    #                 {
-    #                     "message": "Car added successfully",
-    #                     "car": serializer.data,
-    #                 },
-    #                 status=status.HTTP_201_CREATED,
-    #             )
-    #         except IntegrityError:
-    #             return Response(
-    #                 {"error": "Database error. Please check unique constraints."},
-    #                 status=status.HTTP_400_BAD_REQUEST,
-    #             )
-    #         except Exception as e:
-    #             return Response(
-    #                 {"error": f"Unexpected error: {str(e)}"},
-    #                 status=status.HTTP_500_INTERNAL_SERVER_ERROR,
-    #             )
-
-    #     return Response(
-    #         {"message": "Validation failed", "errors": serializer.errors},
-    #         status=status.HTTP_400_BAD_REQUEST,
-    #     )
 
 
 class BrandModelsAPIView(APIView):

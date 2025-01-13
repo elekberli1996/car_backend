@@ -40,34 +40,22 @@ class CarSerializer(serializers.ModelSerializer):
         ]
 
     def create(self, validated_data):
-        # Request'ten gelen veriyi alıyoruz
         request = self.context.get("request")
-
-        # Tüm form verilerini yazdırma
-        print("Form Verileri --------------------------->")
-        print(request.data)  # Form verisi (string, sayılar vb.)
-
-        # Dosya verilerini yazdırma
-        if hasattr(request, "FILES"):
-            print("Dosyalar --------------------------->")
-            for key, file in request.FILES.items():
-                print(f"{key}: {file.name} ({file.size} bytes)")
-
-        # Car nesnesi oluşturuluyor
         car = Car.objects.create(**validated_data)
+        car_images_data = request.FILES.getlist("car_images[]")
 
-        car_images_data = (
-            request.FILES.getlist("car_images[]") if hasattr(request, "FILES") else []
-        )
+        if not car_images_data:
+            raise serializers.ValidationError(
+                {"car_images": "Resim dosyası yüklenmedi."}
+            )
 
-        if car_images_data:
-            try:
-                for image_data in car_images_data:
-                    print(f"Resim: {image_data.name}, Boyut: {image_data.size} bytes")
-                    CarImage.objects.create(car=car, image=image_data)
-                print("Resimler başarıyla kaydedildi.")
-            except Exception as e:
-                print(f"Resim kaydedilirken hata oluştu: {str(e)}")
+        try:
+            for image_data in car_images_data:
+                CarImage.objects.create(car=car, image=image_data)
+        except Exception as e:
+            raise serializers.ValidationError(
+                {"car_images": f"Resim kaydedilirken hata oluştu: {str(e)}"}
+            )
 
         return car
 
