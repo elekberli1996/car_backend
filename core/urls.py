@@ -34,7 +34,7 @@ urlpatterns = [
     # API
     path("api/cars/", include("page.api.urls")),
     path("api/auth/", include("account.api.urls")),
-    path("api/spareparts", include("spareparts.api.urls")),
+    path("api/spareparts/", include("spareparts.api.urls")),
     #
     #
     # Swagger Dokümantasyonu
