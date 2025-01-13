@@ -12,9 +12,15 @@ from rest_framework.decorators import permission_classes
 from ..models import BlacklistedToken
 
 
-# @swagger_auto_schema(request_body=RegisterUserSerializer, methods=["post"], security=[])
+token_param = openapi.Parameter(
+    "Authorization",
+    openapi.IN_HEADER,
+    description="JWT Authorization header using the Bearer scheme. Example: 'Bearer <JWT token>'",
+    type=openapi.TYPE_STRING,
+)
 
 
+@swagger_auto_schema(request_body=RegisterUserSerializer, methods=["post"], security=[])
 @api_view(["POST"])
 def register_user(request):
     serializer = RegisterUserSerializer(data=request.data)
@@ -31,6 +37,7 @@ def register_user(request):
         return Response(serializer.errors, status=status.HTTP_400_BAD_REQUEST)
 
 
+@swagger_auto_schema(request_body=LoginSerializer, methods=["post"], security=[])
 @api_view(["POST"])
 @permission_classes([AllowAny])
 def login_view(request):

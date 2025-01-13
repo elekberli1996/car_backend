@@ -1,6 +1,4 @@
 from ..models import *
-from django.db import IntegrityError
-from django.urls import reverse_lazy
 from .serializers import CarSerializer, CarFilter
 from rest_framework.views import APIView
 from rest_framework import generics, status
@@ -10,23 +8,32 @@ from .serializers import CarModelSerializer, CarHomeSerializer
 from django_filters.rest_framework import DjangoFilterBackend
 from rest_framework import filters
 from rest_framework.permissions import IsAuthenticated
+from drf_yasg.utils import swagger_auto_schema
+from drf_yasg import openapi
+from account.api.auth.security import JWTAuthentication
 
-# csrf korumasin  devre disi birakmak icin
-from django.views.decorators.csrf import csrf_exempt
-from django.utils.decorators import method_decorator
+token_param = openapi.Parameter(
+    "Authorization",
+    openapi.IN_HEADER,
+    description="JWT Authorization header using the Bearer scheme. Example: 'Bearer <JWT token>'",
+    type=openapi.TYPE_STRING,
+)
 
 
+@swagger_auto_schema(manual_parameters=[token_param])
 class HomeAPIView(APIView):
+    authentication_classes = [JWTAuthentication]
+    permission_classes = [IsAuthenticated]
+
     def get(self, request):
         cars = Car.objects.all()
         serializer = CarHomeSerializer(cars, many=True)
         return Response(serializer.data)
 
 
-# @method_decorator(csrf_exempt, name="dispatch")
 class CarCreateView(generics.CreateAPIView):
     serializer_class = CarSerializer
-    permission_classes = [IsAuthenticated]  # Kimlik doğrulama ekliyoruz
+    permission_classes = [IsAuthenticated]
 
     def post(self, request, *args, **kwargs):
         serializer = CarSerializer(data=request.data)
@@ -96,16 +103,10 @@ class CarFilterView(generics.ListAPIView):
 
 
 class CarFilterBrandAPIView(APIView):
-
     def get(self, request, brand, format=None):
-        # Kullanıcının girdiği harfi içeren markaları bul
-        cars = Car.objects.filter(brand__icontains=brand).prefetch_related(
-            "images"
-        )  # CarImage ile ilişkiyi önceden çek
+        cars = Car.objects.filter(brand__icontains=brand).prefetch_related("images")
 
-        # Eğer marka bulunduysa, her aracı serialize et
         if cars.exists():
-            # Serileştirilmiş araç verileri
             serializer = CarSerializer(cars, many=True)
             return Response(serializer.data, status=status.HTTP_200_OK)
         else:

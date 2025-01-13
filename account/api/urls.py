@@ -2,7 +2,9 @@ from django.urls import path
 from .views import register_user, login_view, create_refresh_token, logout_user
 
 # api/auth/login
+# api/auth/logout
 # api/auth/register
+# api/auth/refresh-token
 
 urlpatterns = [
     path("login/", login_view, name="login"),

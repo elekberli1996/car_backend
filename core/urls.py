@@ -43,22 +43,19 @@ from drf_yasg import openapi
 # )
 
 # # Sadece API rotalarını içeren Swagger dokümantasyonu
-# schema_view = get_schema_view(
-#     openapi.Info(
-#         title="API Documentation",
-#         default_version="v1",
-#         description="Mobil uygulama için REST API dokümantasyonu",
-#         terms_of_service="https://www.google.com/policies/terms/",
-#         contact=openapi.Contact(email="info@example.com"),
-#         license=openapi.License(name="MIT License"),
-#     ),
-#     public=True,  # Herkes erişebilir
-#     permission_classes=(permissions.AllowAny,),  # Herkese açık
-#     security=[{"Bearer": []}],  # Swagger'a Bearer token desteği ekliyoruz
-#     security_schemes={
-#         "Bearer": security_scheme  # Swagger'a Bearer token şemasını tanıtıyoruz
-#     },
-# )
+schema_view = get_schema_view(
+    openapi.Info(
+        title="API Documentation",
+        default_version="v1",
+        description="Mobil uygulama için REST API dokümantasyonu",
+        terms_of_service="https://www.google.com/policies/terms/",
+        contact=openapi.Contact(email="info@example.com"),
+        license=openapi.License(name="MIT License"),
+    ),
+    public=True,  # Herkes erişebilir
+    permission_classes=(permissions.AllowAny,),  # Herkese açık
+    authentication_classes=[],
+)
 
 
 urlpatterns = [
@@ -73,17 +70,17 @@ urlpatterns = [
     #
     #
     # Swagger Dokümantasyonu
-    # path(
-    #     "api/docs/",
-    #     schema_view.with_ui("swagger", cache_timeout=0),
-    #     name="schema-swagger-ui",
-    # ),
-    # path(
-    #     "api/redoc/", schema_view.with_ui("redoc", cache_timeout=0), name="schema-redoc"
-    # ),
-    # re_path(
-    #     r"^api/swagger(?P<format>\.json|\.yaml)$",
-    #     schema_view.without_ui(cache_timeout=0),
-    #     name="schema-json",
-    # ),
+    path(
+        "api/docs/",
+        schema_view.with_ui("swagger", cache_timeout=0),
+        name="schema-swagger-ui",
+    ),
+    path(
+        "api/redoc/", schema_view.with_ui("redoc", cache_timeout=0), name="schema-redoc"
+    ),
+    re_path(
+        r"^api/swagger(?P<format>\.json|\.yaml)$",
+        schema_view.without_ui(cache_timeout=0),
+        name="schema-json",
+    ),
 ] + static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)

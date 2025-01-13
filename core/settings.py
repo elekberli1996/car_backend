@@ -95,6 +95,18 @@ REST_FRAMEWORK = {
     "DEFAULT_PERMISSION_CLASSES": ("rest_framework.permissions.IsAuthenticated",),
 }
 
+SWAGGER_SETTINGS = {
+    "SECURITY_DEFINITIONS": {
+        "Bearer": {
+            "type": "apiKey",
+            "name": "Authorization",
+            "in": "header",
+            "description": "JWT tokenını şu formatta girin: Bearer <token>",
+        }
+    },
+    "USE_SESSION_AUTH": False,  # Django'nun varsayılan session auth'ını devre dışı bırak
+}
+
 AUTH_USER_MODEL = "account.CustomUser"
 
 
