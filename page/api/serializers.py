@@ -10,7 +10,9 @@ class CarImageSerializer(serializers.ModelSerializer):
 
 
 class CarSerializer(serializers.ModelSerializer):
-    car_images = CarImageSerializer(many=True, required=False)
+    car_images = serializers.ListField(
+        child=serializers.ImageField(), required=False, write_only=True
+    )
 
     class Meta:
         model = Car
@@ -38,21 +40,52 @@ class CarSerializer(serializers.ModelSerializer):
         ]
 
     def create(self, validated_data):
-        car_images_data = validated_data.pop("car_images", [])
+        # Request'ten gelen veriyi alıyoruz
+        request = self.context.get("request")
+
+        # Tüm form verilerini yazdırma
+        print("Form Verileri --------------------------->")
+        print(request.data)  # Form verisi (string, sayılar vb.)
+
+        # Dosya verilerini yazdırma
+        if hasattr(request, "FILES"):
+            print("Dosyalar --------------------------->")
+            for key, file in request.FILES.items():
+                print(f"{key}: {file.name} ({file.size} bytes)")
+
+        # Car nesnesi oluşturuluyor
         car = Car.objects.create(**validated_data)
 
-        for image_data in car_images_data:
-            CarImage.objects.create(car=car, **image_data)
+        car_images_data = (
+            request.FILES.getlist("car_images[]") if hasattr(request, "FILES") else []
+        )
+
+        if car_images_data:
+            try:
+                for image_data in car_images_data:
+                    print(f"Resim: {image_data.name}, Boyut: {image_data.size} bytes")
+                    CarImage.objects.create(car=car, image=image_data)
+                print("Resimler başarıyla kaydedildi.")
+            except Exception as e:
+                print(f"Resim kaydedilirken hata oluştu: {str(e)}")
 
         return car
 
+    def to_representation(self, instance):
+        """Geri dönerken car_images'ı JSON formatında göster"""
+        rep = super().to_representation(instance)
+        rep["car_images"] = CarImageSerializer(instance.images.all(), many=True).data
+        return rep
 
+
+## <== home ==>
 class CarHomeSerializer(serializers.ModelSerializer):
     class Meta:
         model = Car
         fields = "__all__"
 
 
+## <== home ==>
 class CarModelSerializer(serializers.ModelSerializer):
     class Meta:
         model = CarModel

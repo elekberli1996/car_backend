@@ -1,16 +1,22 @@
 from ..models import *
-from .serializers import CarSerializer, CarFilter
+from drf_yasg import openapi
+from rest_framework import filters
 from rest_framework.views import APIView
 from rest_framework import generics, status
 from rest_framework.response import Response
 from django.views.generic import TemplateView
-from .serializers import CarModelSerializer, CarHomeSerializer
-from django_filters.rest_framework import DjangoFilterBackend
-from rest_framework import filters
-from rest_framework.permissions import IsAuthenticated
 from drf_yasg.utils import swagger_auto_schema
-from drf_yasg import openapi
+from rest_framework.decorators import (
+    api_view,
+    permission_classes,
+    authentication_classes,
+)
+from rest_framework.parsers import MultiPartParser, FormParser
+from .serializers import CarSerializer, CarFilter
 from account.api.auth.security import JWTAuthentication
+from django_filters.rest_framework import DjangoFilterBackend
+from .serializers import CarModelSerializer, CarHomeSerializer
+from rest_framework.permissions import IsAuthenticated, AllowAny
 
 token_param = openapi.Parameter(
     "Authorization",
@@ -20,23 +26,33 @@ token_param = openapi.Parameter(
 )
 
 
-@swagger_auto_schema(manual_parameters=[token_param])
-class HomeAPIView(APIView):
-    authentication_classes = [JWTAuthentication]
-    permission_classes = [IsAuthenticated]
+@api_view(["GET"])
+@authentication_classes([JWTAuthentication])
+@permission_classes([IsAuthenticated])
+def home_view(request):
+    cars = Car.objects.all()
+    serializer = CarHomeSerializer(cars, many=True)
+    return Response(serializer.data)
 
-    def get(self, request):
-        cars = Car.objects.all()
-        serializer = CarHomeSerializer(cars, many=True)
-        return Response(serializer.data)
+
+# class HomeAPIView(APIView):
+#     # authentication_classes = [JWTAuthentication]
+#     permission_classes = [AllowAny]
+
+#     def get(self, request):
+#         cars = Car.objects.all()
+#         serializer = CarHomeSerializer(cars, many=True)
+#         return Response(serializer.data)
 
 
 class CarCreateView(generics.CreateAPIView):
     serializer_class = CarSerializer
+    authentication_classes = [JWTAuthentication]
     permission_classes = [IsAuthenticated]
+    parser_classes = [MultiPartParser, FormParser]
 
     def post(self, request, *args, **kwargs):
-        serializer = CarSerializer(data=request.data)
+        serializer = self.get_serializer(data=request.data)
 
         if serializer.is_valid():
             car_instance = serializer.save()
