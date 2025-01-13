@@ -91,8 +91,6 @@ WSGI_APPLICATION = "core.wsgi.application"
 REST_FRAMEWORK = {
     "DEFAULT_FILTER_BACKENDS": ["django_filters.rest_framework.DjangoFilterBackend"],
     "DEFAULT_AUTHENTICATION_CLASSES": ("account.api.auth.security.JWTAuthentication",),
-    # Tüm API'ler için kimlik doğrulama zorunlu
-    "DEFAULT_PERMISSION_CLASSES": ("rest_framework.permissions.IsAuthenticated",),
 }
 
 SWAGGER_SETTINGS = {

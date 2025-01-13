@@ -28,21 +28,11 @@ token_param = openapi.Parameter(
 
 @api_view(["GET"])
 @authentication_classes([JWTAuthentication])
-@permission_classes([IsAuthenticated])
+@permission_classes([AllowAny])
 def home_view(request):
     cars = Car.objects.all()
     serializer = CarHomeSerializer(cars, many=True)
     return Response(serializer.data)
-
-
-# class HomeAPIView(APIView):
-#     # authentication_classes = [JWTAuthentication]
-#     permission_classes = [AllowAny]
-
-#     def get(self, request):
-#         cars = Car.objects.all()
-#         serializer = CarHomeSerializer(cars, many=True)
-#         return Response(serializer.data)
 
 
 class CarCreateView(generics.CreateAPIView):

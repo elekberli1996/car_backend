@@ -101,9 +101,7 @@ class CarFilter(django_filters.FilterSet):
     max_year = django_filters.NumberFilter(field_name="year", lookup_expr="lte")
     max_mileage = django_filters.NumberFilter(field_name="mileage", lookup_expr="lte")
     brand = django_filters.CharFilter(field_name="brand", lookup_expr="icontains")
-    vehicle_type = django_filters.CharFilter(
-        field_name="vehicle_type", lookup_expr="icontains"
-    )
+    model = django_filters.CharFilter(field_name="model", lookup_expr="icontains")
     city = django_filters.CharFilter(field_name="city", lookup_expr="icontains")
     color = django_filters.CharFilter(field_name="color", lookup_expr="icontains")
 
