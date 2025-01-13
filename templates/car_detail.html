@@ -6,12 +6,12 @@
 {% block custom_css %}
 <link rel="stylesheet" href="{% static 'css/car_detail/style.css' %}">
 <link rel="stylesheet" href="{% static 'css/car_detail/responsive.css' %}">
+
 {% endblock custom_css %}
 
 {% block page_content %}
 
 <div class="container">
-
     <div class="car_detail">
 
         <div class="left">
@@ -20,11 +20,9 @@
                     <!-- her sekil bir bura bir de kicik sekiller hissesine gelmelidi -->
                     <div class="slider">
                         <div class="slide active"><img src="{{ car.main_img.url}}" alt="Image 1"></div>
-
-                        {% for image in images  %}
-                            <div class="slide"><img src="{{ image.image.url }}" alt="Image 4"></div>
+                        {% for image in last_five_items %}
+                        <div class="slide"><img src="{{ image.image.url}}" alt="Image 2"></div>
                         {% endfor %}
-                       
                     </div>
 
 
@@ -34,13 +32,19 @@
                     <!-- Kiçik şəkillər -->
                     <div class="thumbnails">
                         <div class="tubnail1">
+                            {% for first_three_item in first_three_images %}
+                                <img src="{{ first_three_item.image.url}}" alt="" data-index="3" class="thumbnail">  
+                            {% endfor %}
+                            {% comment %} <img src="image1.jpg" alt="" data-index="0" class="thumbnail active">
+                            <img src="image2.jpg" alt="" data-index="1" class="thumbnail">
+                            <img src="image3.jpg" alt="" data-index="2" class="thumbnail"> {% endcomment %}
+                        </div>
+                        <div class="tubnail2">
+                            {% for last_three_item in remaining_images %}
+                                <img src="{{ last_three_item.image.url}}" alt="" data-index="3" class="thumbnail">  
+                            {% endfor %}
 
-                              <img src="{{ car.main_img.url}}" alt="Image 1">
-                                {% for image in images %}   
-                                <img src="{{ image.image.url }}" alt="Image 4">   
-                                {% endfor %}
-                            
-                        </div>     
+                        </div>
                     </div>
                 </div>
             </div>
@@ -50,19 +54,19 @@
             <div class="main_data">
                 <div class="il">
                     <i class="fa-solid fa-calendar"></i>
-                    <span>{{ car.year }}</span>
+                    <span>2019</span>
                 </div>
                 <div class="motor_hecmi">
                     <i class="fa-solid fa-gas-pump"></i>
-                    <span>{{ car.engine_size }}</span>
+                    <span>2.0L</span>
                 </div>
                 <div class="yuruyus">
                     <i class="fa-solid fa-gauge"></i>
-                    <span>{{ car.mileage }} {{ car.unit }}</span>
+                    <span>43000 KM</span>
                 </div>
                 <div class="lokasiya">
                     <i class="fa-solid fa-location-dot"></i>
-                    <span>{{ car.city }} ş.</span>
+                    <span>Naxçıvan ş.</span>
                 </div>
             </div>
             <p id="baxis">Elana Baxış sayı: <span id="baxis_value">5432</span></p>
@@ -73,7 +77,7 @@
 
                         <div class="box">
                             <ul>
-                                <li><span id="marka">Brand</span></li>
+                                <li><span id="marka">Marka</span></li>
                                 <li><span id="model">Model</span></li>
                                 <li><span id="ban">Ban növü</span></li>
                                 <li><span id="reng">Rəng</span></li>
@@ -82,22 +86,22 @@
                             </ul>
                             <ul>
                                 <li>
-                                    <p id="marka-value">{{ car.brand }}</p>
+                                    <p id="marka-value">Porsche</p>
                                 </li>
                                 <li>
-                                    <p id="model-value">{{ car.model }}</p>
+                                    <p id="model-value">Taican</p>
                                 </li>
                                 <li>
-                                    <p id="ban-value">{{ car.vehicle_type }}</p>
+                                    <p id="ban-value">Sedan</p>
                                 </li>
                                 <li>
-                                    <p id="reng-value">{{ car.color }}</p>
+                                    <p id="reng-value">Qara</p>
                                 </li>
                                 <li>
-                                    <p id="yanacaq-value">{{ car.fuel_type }}</p>
+                                    <p id="yanacaq-value">Benzin</p>
                                 </li>
                                 <li>
-                                    <p id="vin-value">{{ car.vin }}</p>
+                                    <p id="vin-value">1CAR43H5U67GT65443</p>
                                     <i class="fa-regular fa-copy" id="copy-icon" style="cursor: pointer;"></i>
 
                                 </li>
@@ -118,19 +122,19 @@
                             </ul>
                             <ul>
                                 <li>
-                                    <p id="suretler-value">{{ car.transmission }}</p>
+                                    <p id="suretler-value">Mexanik</p>
                                 </li>
                                 <li>
-                                    <p id="yurus-value">{{ car.mileage }} {{ car.unit }}</p>
+                                    <p id="yurus-value">135 000 km</p>
                                 </li>
                                 <li>
-                                    <p id="il-value">{{car.year}}</p>
+                                    <p id="il-value">2024</p>
                                 </li>
                                 <li>
-                                    <p id="hecm-value">{{ car.engine_size }}</p>
+                                    <p id="hecm-value">5.5 L</p>
                                 </li>
                                 <li>
-                                    <p id="guc-value">{{ car.power}} a.g</p>
+                                    <p id="guc-value">444 a.g</p>
                                 </li>
 
                             </ul>
@@ -143,7 +147,17 @@
                     <div class="elave_melumat">
                         <span id="melumat">Əlavə məlumat</span>
                         <hr>
-                        <p id="melumat_value">{{ car.information }}</p>
+                        <p id="melumat_value">Mercedes-Benz GLC350e Coupe
+                            Mercedes-Benz in Azərbaycanda rəsmi dileri
+                            “Abşeron Avtomobil Mərkəzi”
+                            4 il zəmanət yürüşdən asılı olmayaraq
+                            От официального дилера Mercedes-Benz
+                            “Absheron Automobile Centre”
+                            Гарантия 4 года без ограничения пробега
+                            From official dealer of Mercedes-Benz
+                            “Absheron Automobile Centre”
+                            4 years of warranty without mileage limitation
+                            Kredit / Leasing</p>
                     </div>
                 </div>
             </div>
@@ -153,23 +167,19 @@
             <div class="box">
                 <p id="qiymet">25 555 AZN</p>
                 <hr>
-
                 <div class="ownerinfo">
                     <div class="owner-left">
                         <h1 id="owner"> Random</h1>
                         <p id="city">Naxçıvan</p>
                     </div>
-
                     <div class="owner-right">
-                        <img src="{% static "img/pp.jpg" %}" alt="">
+                        <img src="img/pp.jpg" alt="">
                     </div>
                 </div>
                 <hr>
                 <div class="cntctbtn">
                     <button> Əlaqə nömrəsi: <br> 050-505-05-05 </button>
                 </div>
-
-
             </div>
             <div class="forAdvertising">
                 <p>Burada reklamınız ola bilər</p>

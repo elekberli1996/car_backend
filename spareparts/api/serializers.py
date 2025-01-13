@@ -29,6 +29,7 @@ class PartSerializer(serializers.ModelSerializer):
             "city",
             "main_img",
             "part_images",
+            "created_at",
         ]
 
     def create(self, validated_data):
@@ -56,3 +57,6 @@ class PartSerializer(serializers.ModelSerializer):
         rep = super().to_representation(instance)
         rep["part_images"] = PartImageSerializer(instance.images.all(), many=True).data
         return rep
+
+    def get_created_at(self, obj):
+        return obj.get_created_at_date()

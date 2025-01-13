@@ -10,9 +10,8 @@ class CarImageSerializer(serializers.ModelSerializer):
 
 
 class CarSerializer(serializers.ModelSerializer):
-    car_images = serializers.ListField(
-        child=serializers.ImageField(), required=False, write_only=True
-    )
+    car_images = serializers.ListField(child=serializers.ImageField(), required=False, write_only=True)
+    created_at = serializers.SerializerMethodField()
 
     class Meta:
         model = Car
@@ -37,6 +36,8 @@ class CarSerializer(serializers.ModelSerializer):
             "city",
             "main_img",
             "car_images",
+            "created_at",
+
         ]
 
     def create(self, validated_data):
@@ -64,6 +65,9 @@ class CarSerializer(serializers.ModelSerializer):
         rep = super().to_representation(instance)
         rep["car_images"] = CarImageSerializer(instance.images.all(), many=True).data
         return rep
+    
+    def get_created_at(self, obj):
+        return obj.get_created_at_date()
 
 
 ## <== home ==>

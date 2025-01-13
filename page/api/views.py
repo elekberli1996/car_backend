@@ -55,6 +55,12 @@ class CarCreateView(generics.CreateAPIView):
         return Response(serializer.errors, status=status.HTTP_400_BAD_REQUEST)
 
 
+class CarDetailView(generics.RetrieveAPIView):
+    queryset = Car.objects.all()
+    serializer_class = CarSerializer
+    lookup_field = "pk"
+
+
 class BrandModelsAPIView(APIView):
     def get(self, request, brand_name):
         try:

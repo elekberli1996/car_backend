@@ -14,10 +14,15 @@ def home(request):
 def car_detail(request, id):
     car = get_object_or_404(Car, id=id)
     images = car.images.all()
+    first_three_images = images[:3]
+    remaining_images = images[3:]
+    last_five_items = images[1:5]
 
     context = {
         "car": car,
-        "images": images,
+        "images": "images",
+        "first_three_images": first_three_images,
+        "remaining_images": remaining_images,
     }
     return render(request, "car_detail.html", context)
 

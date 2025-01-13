@@ -6,6 +6,21 @@ from .serializers import PartImageSerializer, PartImage, PartSerializer
 from rest_framework.permissions import IsAuthenticated, AllowAny
 from account.api.auth.security import JWTAuthentication
 from rest_framework.parsers import MultiPartParser, FormParser
+from rest_framework.decorators import (
+    api_view,
+    permission_classes,
+    authentication_classes,
+)
+from ..models import PartImage, Parts
+
+
+@api_view(["GET"])
+@authentication_classes([JWTAuthentication])
+@permission_classes([AllowAny])
+def parts_home_view(request):
+    cars = Parts.objects.all()
+    serializer = PartImageSerializer(cars, many=True)
+    return Response(serializer.data)
 
 
 class PartCreateView(generics.CreateAPIView):
@@ -26,3 +41,9 @@ class PartCreateView(generics.CreateAPIView):
             )
 
         return Response(serializer.errors, status=status.HTTP_400_BAD_REQUEST)
+
+
+class PartDetailView(generics.RetrieveAPIView):
+    queryset = Parts.objects.all()
+    serializer_class = PartSerializer
+    lookup_field = "pk"
