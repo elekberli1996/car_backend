@@ -27,11 +27,14 @@ urlpatterns = [
     path("", home, name="home"),
     path("admin/", admin.site.urls),
     path("cars/", include("page.urls")),
+    path("auth/", include("account.urls")),
+    path("spareparts/", include("spareparts.urls")),
     #
     #
     # API
     path("api/cars/", include("page.api.urls")),
     path("api/auth/", include("account.api.urls")),
+    path("api/spareparts", include("spareparts.api.urls")),
     #
     #
     # Swagger Dokümantasyonu

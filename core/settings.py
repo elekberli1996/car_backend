@@ -43,13 +43,10 @@ INSTALLED_APPS = [
     "django_cleanup",
     "account",
     "page",
+    "spareparts",
     #
     # doc
     "drf_yasg",
-    #
-    # jwt token
-    # "rest_framework_simplejwt",
-    # "rest_framework_simplejwt.token_blacklist",
 ]
 
 MIDDLEWARE = [

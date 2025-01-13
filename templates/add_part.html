@@ -1,0 +1,156 @@
+{% extends "base.html" %}
+{% load static %}
+
+{% block page_title %}Elan Yerlesdirmek{% endblock page_title %}
+
+
+{% block custom_css %}
+<link rel="stylesheet" href="{% static "css/add_part/add_part.css" %}">
+<link rel="stylesheet" href="{% static "css/add_part/add_part_responsive.css" %}">
+{% endblock custom_css %}
+
+
+{% block page_content %}
+
+<div class="frame">
+    <div class="ad-posting-container">
+        <h1>Elan Yerləşdirmək</h1>
+        <form action="{% url 'add_part' %}" method="POST" id="ad-form"  enctype="multipart/form-data">
+            {% csrf_token %}
+            <!-- Elan Məlumatları Section -->
+            <fieldset>
+                <legend>Elan Məlumatları</legend>
+
+                <div class="form-row">
+                    <!-- Marka -->
+                    <div class="form-group">
+                        <label for="brand">Marka: <span class="required">*</span></label>
+                        <select id="brand" name="brand" required>
+                            <option value="">Seçin</option>
+                            {% for car_marka_opt in brands %}
+
+                            <option value="{{car_marka_opt.name}}">{{car_marka_opt.name}}</option>
+
+                            {% endfor %}
+
+                            <!-- Add all car brands here -->
+                        </select>
+                    </div>
+
+                    <!-- Model -->
+                    <div class="form-group">
+                        <label for="model">Model: <span class="required">*</span></label>
+                        <select id="model" name="model" required>
+                            <option value="">Seçin</option>
+
+
+                            <!-- Add all car models here -->
+                        </select>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="part_name">Hissənin adı:</label>
+                        <input type="text" id="part_name" name="part_name" placeholder="hissənin adını daxil edin">
+                    </div>
+
+                     <!-- hissenin veziyeti -->
+                    <div class="form-group">
+                        <label for="cond">Vəziyyəti: <span class="required">*</span></label>
+                        <select id="cond" name="cond" required>
+                            <option value="">Vəziyyətini seçin</option>
+                            <option value="Yeni">Yeni</option>
+                            <option value="İstifade olunmuş">İstifadə olunmuş</option>
+                    
+                            
+                    <!-- price -->
+                    
+                    <div class="form-group">
+                        <label for="price">Qiymət:</label>
+                        <input type="text" id="price" name="price" placeholder="Qiymət daxil edin">
+                    </div>
+
+                <!-- valyuta -->
+                    <div class="form-group">
+                        <label for="valyuta">Valyuta: <span class="required">*</span></label>
+                        <select id="valyuta" name="currency" required>
+                            <option value="">Seçin</option>
+                            <option value="AZN">AZN</option>
+                            <option value="USD">USD</option>
+                            <option value="EURO">EURO</option>
+                            <option value="RUBLE">RUBL</option>
+                        </select>
+                    </div>
+
+                    <!-- Əlavə Məlumat -->
+                    <div class="form-group">
+                        <label for="additional-info">Əlavə məlumat:</label>
+                        <textarea id="additional-info" name="information"
+                            placeholder="Avtomobiliniz haqqında əlavə məlumat"></textarea>
+                    </div>
+                </div>
+            </fieldset>
+
+            <!-- Şəkil Yükləmə Bölməsi -->
+            <fieldset>
+                <legend>Ehtiyat hissəsinin Şəkilləri</legend>
+                <p>* Şəkillər aydın görünməli və əhatəli olmalıdır. Ekran şəkilləri, skrinşotlar qadağandır ! <br>*
+                    Avtomobillə əlaqəsi olmayan şəkillər qəbul edilmir. <br> * Əsas şəkil bölməsinə ehtiyat hissəsinin əsas
+                    səhifədə görünməli olduğu şəkili əlavə edin. (Öndən və ya kənardan çəkilmiş şəkil tövsiyə olunandır)
+                    <br> * Əlavə şəkillər bölməsinə ehtiyat hissəsi haqqında detallı məlumat səhifəsində görünəcək şəkilləri
+                    əlavə edin.
+                </p>
+                <div class="form-group">
+                    <label for="main-image">Əsas Şəkil: <span class="required">*</span></label>
+                    <input type="file" id="main-image" name="main_img" accept="image/*" required>
+                </div>
+                <div class="form-group">
+                    <label for="additional-images">Əlavə Şəkillər: <span class="required">*</span> </label>
+                    <input type="file" id="additional-images" name="car_images" accept="image/*" multiple>
+                </div>
+            </fieldset>
+            <!-- Əlaqə Section -->
+
+            <fieldset>
+                <legend>Əlaqə Məlumatları</legend>
+
+                <div class="form-row">
+                    <div class="form-group">
+                        <label for="name">Adınız: <span class="required">*</span></label>
+                        <input type="text" id="name" name="name" required>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="phone">Telefon nömrəsi: <span class="required">*</span></label>
+                        <input type="text" id="phone" name="tel" required>
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    <label for="city">Şəhər: <span class="required">*</span></label>
+                    <select id="city" name="city" required>
+                        <option value="">Seçin</option>
+                        <option value="Naxchivan">Naxçıvan</option>
+                        <option value="Şahbuz">Şahbuz</option>
+                        <option value="Şarur">Şərur</option>
+                        <option value="Ordubad">Ordubad</option>
+                        <option value="Babek">Babək</option>
+                        <option value="Kəngərli">Kəngərli</option>
+                        <option value="Culfa">Culfa</option>
+                        <option value="Sədərək">Sədərək</option>
+                    </select>
+
+                </div>
+
+            </fieldset>
+
+            <button type="submit">Davam et</button>
+        </form>
+
+    </div>
+</div>
+{% endblock page_content %}
+
+
+{% block custom_js %}
+<script src="{% static "js/add_part/add_part.js" %}"></script>
+{% endblock custom_js %}
