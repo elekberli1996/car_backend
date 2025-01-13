@@ -1,0 +1,43 @@
+{% extends "base.html" %}
+{% load static %}
+{% block page_title %}Auth Page{% endblock page_title %}
+
+
+{% block custom_css %}
+<link rel="stylesheet" href="{% static "css/login_register/style.css" %}">
+{% endblock custom_css %}
+
+{% block page_content %}
+
+<div class="parent_container">
+    <div class="main">
+        <input type="checkbox" id="chk" aria-hidden="true">
+
+        <div class="signup">
+            <form>
+                <label for="chk" aria-hidden="true">Qeydiyyat</label>
+                <input type="text" name="txt" placeholder="Adınız" required="">
+                <input type="email" name="email" placeholder="E-mail" required="">
+                <input type="password" name="pswd" placeholder="Parol" required="">
+                <button>Qeydiyyatdan keç</button>
+            </form>
+            <span>Hesabınız var? <i class="fa-solid fa-arrow-down"></i> </span>
+        </div>
+
+        <div class="login">
+            <form>
+                <label for="chk" aria-hidden="true">Daxil ol</label>
+                <input type="email" name="email" placeholder="bircar@example.com" required="">
+                <input type="password" name="pswd" placeholder="Parolunuzu daxil edin" required="">
+                <button>Daxil ol</button>
+
+            </form>
+        </div>
+    </div>
+</div>
+    
+{% endblock page_content %}
+
+
+{% block custom_js %}
+{% endblock custom_js %}

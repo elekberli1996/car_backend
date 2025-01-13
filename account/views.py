@@ -8,3 +8,7 @@ def login_view(request):
 
 def register_view(request):
     pass
+
+
+def auth_view(request):
+    return render(request, "login_register_page.html")
