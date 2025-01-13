@@ -9,6 +9,7 @@ from django.views.generic import TemplateView
 from .serializers import CarModelSerializer, CarHomeSerializer
 from django_filters.rest_framework import DjangoFilterBackend
 from rest_framework import filters
+from rest_framework.permissions import IsAuthenticated
 
 # csrf korumasin  devre disi birakmak icin
 from django.views.decorators.csrf import csrf_exempt
@@ -25,6 +26,22 @@ class HomeAPIView(APIView):
 # @method_decorator(csrf_exempt, name="dispatch")
 class CarCreateView(generics.CreateAPIView):
     serializer_class = CarSerializer
+    permission_classes = [IsAuthenticated]  # Kimlik doğrulama ekliyoruz
+
+    def post(self, request, *args, **kwargs):
+        serializer = CarSerializer(data=request.data)
+
+        if serializer.is_valid():
+            car_instance = serializer.save()
+            return Response(
+                {
+                    "message": "Car added successfully",
+                    "car_id": car_instance.id,
+                },
+                status=status.HTTP_201_CREATED,
+            )
+
+        return Response(serializer.errors, status=status.HTTP_400_BAD_REQUEST)
 
     # def post(self, request, *args, **kwargs):
     #     serializer = CarSerializer(data=request.data)
@@ -54,20 +71,6 @@ class CarCreateView(generics.CreateAPIView):
     #         {"message": "Validation failed", "errors": serializer.errors},
     #         status=status.HTTP_400_BAD_REQUEST,
     #     )
-    def post(self, request, *args, **kwargs):
-        serializer = CarSerializer(data=request.data)
-
-        if serializer.is_valid():
-            car_instance = serializer.save()
-            return Response(
-                {
-                    "message": "Car added successfully",
-                    "car_id": car_instance.id,
-                },
-                status=status.HTTP_201_CREATED,
-            )
-
-        return Response(serializer.errors, status=status.HTTP_400_BAD_REQUEST)
 
 
 class BrandModelsAPIView(APIView):

@@ -48,8 +48,8 @@ INSTALLED_APPS = [
     "drf_yasg",
     #
     # jwt token
-    "rest_framework_simplejwt",
-    "rest_framework_simplejwt.token_blacklist",
+    # "rest_framework_simplejwt",
+    # "rest_framework_simplejwt.token_blacklist",
 ]
 
 MIDDLEWARE = [
@@ -90,9 +90,7 @@ WSGI_APPLICATION = "core.wsgi.application"
 ## DRF
 REST_FRAMEWORK = {
     "DEFAULT_FILTER_BACKENDS": ["django_filters.rest_framework.DjangoFilterBackend"],
-    "DEFAULT_AUTHENTICATION_CLASSES": (
-        "rest_framework_simplejwt.authentication.JWTAuthentication",
-    ),
+    "DEFAULT_AUTHENTICATION_CLASSES": ("account.api.auth.security.JWTAuthentication",),
     # Tüm API'ler için kimlik doğrulama zorunlu
     "DEFAULT_PERMISSION_CLASSES": ("rest_framework.permissions.IsAuthenticated",),
 }
