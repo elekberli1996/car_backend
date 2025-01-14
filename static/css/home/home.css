@@ -84,9 +84,9 @@ input {
 }
 .price,
 .year {
-  /* width: calc((100% - (5px * (4 - 1))) / 4);
+  width: calc((100% - (5px * (4 - 1))) / 4);
   display: flex;
-  font-size: 15px; */
+  font-size: 15px;
 }
 #maxMil,
 #location {
@@ -113,7 +113,7 @@ input {
 .allCars {
   width: 900px;
   max-width: 95%;
-  margin: 20px auto;
+  margin: 100px auto;
 }
 .allCars h1 {
   font-size: 30px;
@@ -232,23 +232,27 @@ hr {
 .mainAdvert1,
 .mainAdvert2 {
   width: calc((100% - 910px) / 2);
-  height: 100vh;
+  height: 70vh;
   background-color: #007bff;
-  /* border-radius: 10px; */
+  border-radius: 10px;
   padding: 5px;
   display: flex;
   align-items: center;
   justify-content: center;
   color: white;
+  margin-bottom: 5px;
+  margin-top: 5px;
 }
 .mainAdvert1 {
-  position: sticky;
-  top: 0;
+  position: fixed;
+  top: 80px;
+  left: 0;
   z-index: 5;
 }
 .mainAdvert2 {
-  position: sticky;
-  top: 0;
+  position: fixed;
+  top: 80px;
+  right: 0;
   z-index: 5;
 }
 
@@ -295,7 +299,7 @@ hr {
   display: flex;
   justify-content: center;
   align-items: center;
-  /* border-radius: 10px; */
+  border-radius: 10px;
   color: white;
 }
 
@@ -309,16 +313,16 @@ hr {
 
 @keyframes advertising {
   0% {
-    transform: translateY(-250px);
+    transform: translateY(-200px);
   }
   25% {
-    transform: translateY(250px);
+    transform: translateY(200px);
   }
   50% {
-    transform: translateY(250px);
+    transform: translateY(200px);
   }
   100% {
-    transform: translateY(-250px);
+    transform: translateY(-200px);
   }
 }
 @keyframes advertising2 {

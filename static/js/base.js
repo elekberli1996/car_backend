@@ -1,5 +1,5 @@
 // ? Navbar Start --->
-const add = document.querySelector(".add");
+const add = document.querySelector("#add");
 const elans = document.querySelector(".elans");
 const elan1 = document.querySelector(".elan1");
 const elan2 = document.querySelector(".elan2");

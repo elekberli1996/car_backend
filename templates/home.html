@@ -33,41 +33,106 @@
     <div class="filterDiv" style="display: none;">
     <form class="filter" action="">
         <select class="brand" id="brand">
-            <option value="">Brand</option>
+            <option value="">Marka</option>
             <option>Toyota</option>
             <option>Honda</option>
             <option>Ford</option>
         </select>
         <select class="vehicleType" id="vehicleType">
-            <option value="">Vehicle Type</option>
+            <option value="">Model</option>
             <option>Sedan</option>
             <option>SUV</option>
             <option>Truck</option>
         </select>
-        <select class="condition" id="condition">
-            <option value="">Condition</option>
-            <option>New</option>
-            <option>Used</option>
+        <select id="body-type" name="vehicle_type" >
+            <option value="">Ban növü</option>
+            <option value="Avtobus">Avtobus</option>
+            <option value="Dartqı">Dartqı</option>
+            <option value="Fastbek">Fastbek</option>
+            <option value="Fayton">Fayton</option>
+            <option value="Furqon">Furqon</option>
+            <option value="Hetçbek, 3 qapı">Hetçbek, 3 qapı</option>
+            <option value="Hetçbek, 4 qapı">Hetçbek, 4 qapı</option>
+            <option value="Hetçbek, 5 qapı">Hetçbek, 5 qapı</option>
+            <option value="Kabriolet">Kabriolet</option>
+            <option value="Karvan">Karvan</option>
+            <option value="Kompakt-Van">Kompakt-Van</option>
+            <option value="Kupe">Kupe</option>
+            <option value="Kvadrosikl">Kvadrosikl</option>
+            <option value="Liftbek">Liftbek</option>
+            <option value="Limuzin">Limuzin</option>
+            <option value="Mikroavtobus">Mikroavtobus</option>
+            <option value="Mikrovan">Mikrovan</option>
+            <option value="Minivan">Minivan</option>
+            <option value="Moped">Moped</option>
+            <option value="Motosiklet">Motosiklet</option>
+            <option value="Offroader / SUV, 3 qapı">Offroader / SUV, 3 qapı</option>
+            <option value="Offroader / SUV, 5 qapı">Offroader / SUV, 5 qapı</option>
+            <option value="Offroader / SUV, açıq">Offroader / SUV, açıq</option>
+            <option value="Pikap, bir yarım kabin">Pikap, bir yarım kabin</option>
+            <option value="Pikap, ikiqat kabin">Pikap, ikiqat kabin</option>
+            <option value="Pikap, tək kabin">Pikap, tək kabin</option>
+            <option value="Qolfkar">Qolfkar</option>
+            <option value="Rodster">Rodster</option>
+            <option value="Sedan">Sedan</option>
+            <option value="Skuter">Skuter</option>
+            <option value="Spidster">Spidster</option>
+            <option value="SUV Kupe">SUV Kupe</option>
+            <option value="Tarqa">Tarqa</option>
+            <option value="Universal, 3 qapı">Universal, 3 qapı</option>
+            <option value="Universal, 5 qapı">Universal, 5 qapı</option>
+            <option value="Van">Van</option>
+            <option value="Yük maşını">Yük maşını</option>
+            <!-- Add all body types here -->
         </select>
+        <select id="color" name="color" >
+            <option value="">Rəng</option>
+            <option value="Qara">Qara</option>
+            <option value="Yaş Asfalt">Yaş Asfalt</option>
+            <option value="Boz">Boz</option>
+            <option value="Gümüşü">Gümüşü</option>
+            <option value="Ağ">Ağ</option>
+            <option value="Bej">Bej</option>
+            <option value="Tünd qırmızı">Tünd qırmızı</option>
+            <option value="Qırmızı">Qırmızı</option>
+            <option value="Çəhrayı">Çəhrayı</option>
+            <option value="Narıncı">Narıncı</option>
+            <option value="Qızılı">Qızılı</option>
+            <option value="Sarı">Sarı</option>
+            <option value="Yaşıl">Yaşıl</option>
+            <option value="Açıq yaşıl">Açıq yaşıl</option>
+            <option value="Mavi">Mavi</option>
+            <option value="Göy">Göy</option>
+            <option value="Bənövşəyi">Bənövşəyi</option>
+            <option value="Qəhvəyi">Qəhvəyi</option>
+            <!-- Add other colors similarly -->
+        </select>
+        <select id="city" name="city" required>
+            <option value="">Şəhər</option>
+            <option value="Naxchivan">Naxçıvan</option>
+            <option value="Şahbuz">Şahbuz</option>
+            <option value="Şarur">Şərur</option>
+            <option value="Ordubad">Ordubad</option>
+            <option value="Babek">Babək</option>
+            <option value="Kəngərli">Kəngərli</option>
+            <option value="Culfa">Culfa</option>
+            <option value="Sədərək">Sədərək</option>
+        </select>
+       
         <div class="price" id="price">
-            <input id="minPrice" type="number" placeholder="Min Price" value="">
-            <input id="maxPrice" type="number" placeholder="Max Price" value="">
+            <input id="minPrice" type="number" placeholder="Min Qiymət" value="">
+            <input id="maxPrice" type="number" placeholder="Max Qiymət" value="">
         </div>
         <div class="year" id="year">
-            <input id="minYear" type="number" placeholder="Min Year" value="">
-            <input id="maxYear" type="number" placeholder="Max Year" value="">
+            <input id="minYear" type="number" placeholder="Min İl" value="">
+            <input id="maxYear" type="number" placeholder="Max İl" value="">
         </div>
-        <input id="maxMil" type="number" placeholder="Max Mileage (km)" value="">
-        <input id="location" type="text" placeholder="Location" value="">
-        <select id="color" class="color">
-            <option value="">Color</option>
-            <option>Black</option>
-            <option>White</option>
-            <option>Silver</option>
-            <option>Red</option>
-        </select>
+        <input id="maxMil" type="number" placeholder="Max Yürüş (km)" value="">
+        
+      
 
-
+ 
+      
     </form>
     </div>
     </section>
@@ -79,7 +144,7 @@
     </div>
     <section class="allCars">
 
-    <h1>Premium Masınlar</h1>
+    <!-- <h1>Premium Masınlar</h1>
     <div class="premiumCars">
         {% for car in cars %}
         <a href="{% url "page:car_detail" car.id %}" class="card">
@@ -113,7 +178,7 @@
     </div>
     <div class="mainAdvert3">
         <p>Burada reklamınız ola bilər</p>
-    </div>
+    </div> -->
     <h1>Butun Masınlar</h1>
     <div class="cars">
 
