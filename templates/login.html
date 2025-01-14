@@ -1,0 +1,48 @@
+{% extends "base.html" %}
+{% load static %}
+
+{% block page_title %}Login{% endblock page_title %}
+
+
+{% block custom_css %}
+<link rel="stylesheet" href="{% static "" %}">
+<link rel="stylesheet" href="{% static "" %}">
+{% endblock custom_css %}
+
+
+{% block page_content %}
+
+<form method="post">
+    {% csrf_token %}
+    
+    <label for="id_username">Email:</label>
+    <input type="email" name="username" id="id_username" required>
+
+    <label for="id_password">Şifre:</label>
+    <input type="password" name="password" id="id_password" required>
+
+    <button type="submit">Giriş Yap</button>
+</form>
+
+{% if form.errors %}
+    <ul>
+        {% for field, errors in form.errors.items %}
+            {% for error in errors %}
+                <li>{{ error }}</li>
+            {% endfor %}
+        {% endfor %}
+    </ul>
+{% endif %}
+
+<p>Hesabın yok mu? <a href="{% url 'register' %}">Kayıt ol</a></p>
+
+
+{% endblock page_content %}
+
+
+
+
+
+{% block custom_js %}
+<script src="{% static "" %}"></script>
+{% endblock custom_js %}

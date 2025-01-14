@@ -5,27 +5,27 @@ from .models import CustomUser
 
 class CustomUserAdmin(UserAdmin):
     model = CustomUser
-    list_display = ["username", "email", "phone", "status", "is_staff", "is_active"]
-    list_filter = ["status", "is_staff", "is_active"]
-    search_fields = ["username", "email"]
-    ordering = ["date_joined"]
+    list_display = (
+        "id",
+        "username",
+        "email",
+        "phone",
+        "status",
+        "is_staff",
+        "is_active",
+    )
+    list_filter = ("status", "is_staff", "is_active")
+
     fieldsets = (
-        (None, {"fields": ("username", "password")}),
-        ("Personal info", {"fields": ("email", "phone", "status")}),
+        (None, {"fields": ("email", "password")}),
+        ("Personal Info", {"fields": ("username", "phone")}),
         (
             "Permissions",
-            {
-                "fields": (
-                    "is_active",
-                    "is_staff",
-                    "is_superuser",
-                    "groups",
-                    "user_permissions",
-                )
-            },
+            {"fields": ("is_staff", "is_active", "groups", "user_permissions")},
         ),
-        ("Important dates", {"fields": ("last_login", "date_joined")}),
+        ("Important Dates", {"fields": ("last_login", "date_joined")}),
     )
+
     add_fieldsets = (
         (
             None,
@@ -34,14 +34,18 @@ class CustomUserAdmin(UserAdmin):
                 "fields": (
                     "email",
                     "username",
-                    "phone",
-                    "status",
                     "password1",
                     "password2",
+                    "phone",
+                    "is_staff",
+                    "is_active",
                 ),
             },
         ),
     )
+
+    search_fields = ("email", "username", "phone")
+    ordering = ("email",)
 
 
 admin.site.register(CustomUser, CustomUserAdmin)

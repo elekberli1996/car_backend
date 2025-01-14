@@ -1,0 +1,49 @@
+{% extends "base.html" %}
+{% load static %}
+
+{% block page_title %}Register{% endblock page_title %}
+
+{% block custom_css %}
+<link rel="stylesheet" href="{% static "" %}">
+<link rel="stylesheet" href="{% static "" %}">
+{% endblock custom_css %}
+
+
+{% block page_content %}
+
+<form method="post">
+    {% csrf_token %}
+    
+    <label for="id_username">Kullanıcı Adı:</label>
+    <input type="text" name="username" id="id_username" required>
+
+    <label for="id_email">Email:</label>
+    <input type="email" name="email" id="id_email" required>
+
+    <label for="id_password1">Şifre:</label>
+    <input type="password" name="password1" id="id_password1" required>
+
+    <label for="id_password2">Şifre Tekrar:</label>
+    <input type="password" name="password2" id="id_password2" required>
+
+    <button type="submit">Kayıt Ol</button>
+</form>
+
+{% if form.errors %}
+    <ul>
+        {% for field, errors in form.errors.items %}
+            {% for error in errors %}
+                <li>{{ error }}</li>
+            {% endfor %}
+        {% endfor %}
+    </ul>
+{% endif %}
+<p>Zaten bir hesabın var mı? <a href="{% url 'login' %}">Giriş yap</a></p>
+
+
+{% endblock page_content %}
+
+
+{% block custom_js %}
+<script src="{% static "" %}"></script>
+{% endblock custom_js %}
